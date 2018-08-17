@@ -1,10 +1,9 @@
-package com.hrand.android.timesupmobile
+package com.hrand.android.timesupmobile.activities
 
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import kotlinx.android.synthetic.main.activity_main.*
+import com.hrand.android.timesupmobile.R
 
 class MainActivity : AppCompatActivity() {
 
