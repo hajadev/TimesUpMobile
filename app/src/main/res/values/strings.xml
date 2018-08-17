@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">TimesUpMobile</string>
+    <string name="main_title">Time\'s Up</string>
+    <string name="msg_test">Ceci est un test</string>
+    <string name="contact_mail">haja.dev@gmail.com</string>
+    <string name="new_game">Nouvelle Partie</string>
+    <string name="add_words">Ajout de mots</string>
+    <string name="option">Options</string>
+    <string name="exit">Quitter</string>
 </resources>

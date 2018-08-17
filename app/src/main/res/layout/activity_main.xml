@@ -1,19 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ekoly.android.timesupmobile.MainActivity">
+    tools:context="com.hrand.android.timesupmobile.MainActivity">
+    <TextView
+        android:id="@+id/main_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/main_title"
+        android:textStyle="bold|italic"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:layout_alignParentTop="true"/>
+
+    <LinearLayout
+        android:id="@+id/llMenuBtn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/main_title"
+        android:layout_above="@+id/sample_text"
+        >
+
+        <Button
+            android:id="@+id/btn_new_game"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/new_game"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <Button
+            android:id="@+id/btn_add_words"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/add_words"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <Button
+            android:id="@+id/btn_option"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/option"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <Button
+            android:id="@+id/btn_exit"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/exit"
+            android:layout_gravity="center_horizontal"
+            />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/sample_text"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/contact_mail"
+        android:textColor="@color/colorAccent"
+        android:textAlignment="textEnd"
+        android:gravity="end"
+        android:layout_alignParentBottom="true"/>
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

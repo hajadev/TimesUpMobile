@@ -5,7 +5,7 @@ extern "C"
 JNIEXPORT jstring
 
 JNICALL
-Java_com_ekoly_android_timesupmobile_MainActivity_stringFromJNI(
+Java_com_hrand_android_timesupmobile_MainActivity_stringFromJNI(
         JNIEnv *env,
         jobject /* this */) {
     std::string hello = "Hello from C++";
