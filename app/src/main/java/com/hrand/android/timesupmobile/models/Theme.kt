@@ -1,11 +1,15 @@
 package com.hrand.android.timesupmobile.models
 
-import io.objectbox.annotation.Convert
+import io.objectbox.annotation.Backlink
+import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id
+import io.objectbox.generator.model.ToMany
 
-data class Theme {
-    @Id var id: Long = 0,
-    var value: String,
-    @Convert(converter = Long::class, dbType = String::class)
-    val strings: List<String> = listOf()
+@Entity
+class Theme {
+    @Id
+    var id: Long = 0
+    var value: String = ""
+    @Backlink(to = "themes")
+    lateinit var words: ToMany<Word>
 }
