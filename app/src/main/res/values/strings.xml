@@ -7,4 +7,7 @@
     <string name="add_words">Ajout de mots</string>
     <string name="option">Options</string>
     <string name="exit">Quitter</string>
+    <string name="reset_content">Réinitialiser Contenu</string>
+    <string name="content_reset">Contenu réinitialisé</string>
+    <string name="back">Retour</string>
 </resources>

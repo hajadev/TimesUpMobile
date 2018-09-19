@@ -10,12 +10,18 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        initBtnListener();
+        initBtnListener()
     }
 
     private fun initBtnListener(){
-        val btnExit = findViewById<Button>(R.id.btn_exit);
+        val btnExit = findViewById<Button>(R.id.btn_exit)
         btnExit.setOnClickListener { v -> this.finish() }
+
+        val btnOption = findViewById<Button>(R.id.btn_option)
+        btnOption.setOnClickListener {v ->
+            val intent = OptionActivity.newIntent(this)
+            startActivity(intent)
+        }
     }
 
     /**
