@@ -13,5 +13,5 @@ class Word {
     var difficulty: Long = 0
 
     @Backlink(to = "words")
-    lateinit var themes: ToMany<Theme>
+    lateinit var themes: List<Theme>
 }

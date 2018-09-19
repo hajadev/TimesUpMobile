@@ -11,5 +11,5 @@ class Theme {
     var id: Long = 0
     var value: String = ""
     @Backlink(to = "themes")
-    lateinit var words: ToMany<Word>
+    lateinit var words: List<Word>
 }
