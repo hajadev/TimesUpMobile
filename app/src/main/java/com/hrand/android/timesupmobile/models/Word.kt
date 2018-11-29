@@ -3,7 +3,7 @@ package com.hrand.android.timesupmobile.models
 import io.objectbox.annotation.Backlink
 import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id
-import io.objectbox.generator.model.ToMany
+import io.objectbox.relation.ToMany
 
 @Entity
 class Word {
@@ -12,6 +12,6 @@ class Word {
     var value: String? = null
     var difficulty: Long = 0
 
-    @Backlink(to = "words")
-    lateinit var themes: List<Theme>
+    //@Backlink(to = "words")
+    lateinit var themes: ToMany<Theme>
 }

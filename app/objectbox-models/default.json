@@ -1,0 +1,64 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:6658087772862139930",
+      "lastPropertyId": "2:8530558212882158410",
+      "name": "Theme",
+      "properties": [
+        {
+          "id": "1:1581391189332590932",
+          "name": "id"
+        },
+        {
+          "id": "2:8530558212882158410",
+          "name": "value"
+        }
+      ],
+      "relations": [
+        {
+          "id": "1:3105865185163645965",
+          "name": "words"
+        }
+      ]
+    },
+    {
+      "id": "2:3077237253210463111",
+      "lastPropertyId": "3:3979227687417904546",
+      "name": "Word",
+      "properties": [
+        {
+          "id": "1:9133409032056988243",
+          "name": "id"
+        },
+        {
+          "id": "2:3721636375704539508",
+          "name": "value"
+        },
+        {
+          "id": "3:3979227687417904546",
+          "name": "difficulty"
+        }
+      ],
+      "relations": [
+        {
+          "id": "2:4948764005448365776",
+          "name": "themes"
+        }
+      ]
+    }
+  ],
+  "lastEntityId": "2:3077237253210463111",
+  "lastIndexId": "0:0",
+  "lastRelationId": "2:4948764005448365776",
+  "lastSequenceId": "0:0",
+  "modelVersion": 4,
+  "modelVersionParserMinimum": 4,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
