@@ -5,7 +5,7 @@ import io.objectbox.annotation.Id
 import io.objectbox.relation.ToMany
 
 @Entity
-class Word {
+class Word(id: Long, value: String, difficulty: Long) {
     @Id
     var id: Long = 0
     var value: String? = null

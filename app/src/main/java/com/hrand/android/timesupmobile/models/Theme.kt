@@ -5,7 +5,7 @@ import io.objectbox.annotation.Id
 import io.objectbox.relation.ToMany
 
 @Entity
-class Theme {
+class Theme(id: Long, value: String) {
     @Id
     var id: Long = 0
     var value: String = ""
