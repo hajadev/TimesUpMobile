@@ -3,6 +3,7 @@
     package="com.hrand.android.timesupmobile">
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,7 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.OptionActivity"></activity>
+        <activity android:name=".activities.OptionActivity" />
+        <activity android:name=".activities.WordsListActivity"></activity>
     </application>
 
 </manifest>

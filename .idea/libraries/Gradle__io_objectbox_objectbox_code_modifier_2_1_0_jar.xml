@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: io.objectbox:objectbox-code-modifier:2.1.0@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.objectbox/objectbox-code-modifier/2.1.0/f3d084a5e06db565215a8c4296d3dab269fc15b0/objectbox-code-modifier-2.1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.objectbox/objectbox-code-modifier/2.1.0/e27d8e0316f56243ae434dc1c2b051a3b99f64ab/objectbox-code-modifier-2.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

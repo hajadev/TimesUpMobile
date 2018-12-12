@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import com.hrand.android.timesupmobile.R
@@ -14,6 +15,8 @@ class OptionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_option)
         initBtnListener()
+
+        Log.i("haja", "On est dans le optionActivity")
     }
 
     private fun initBtnListener(){
