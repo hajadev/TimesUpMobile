@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -27,11 +28,13 @@ class WordsListActivity : AppCompatActivity() {
         //recyclerView = findViewById(R.id.rv_words)
         linearLayoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = linearLayoutManager
+        // separation between items
+        recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
 
         btn_back.setOnClickListener { _ -> this.finish() }
 
         // retrieve the list word to the adapter
-        //WordDao.init(this)
+        WordDao.init(this)
 
 
 
