@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.hrand.android.timesupmobile.R
+import com.hrand.android.timesupmobile.daos.ThemeDao
 import com.hrand.android.timesupmobile.daos.WordDao
 import com.hrand.android.timesupmobile.models.Theme
 import com.hrand.android.timesupmobile.utils.*
@@ -14,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var themesBox: Box<Theme>
+    //private lateinit var themesBox: Box<Theme>
     //private lateinit var wordsBox: Box<Word>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,14 +44,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun initDataBase(){
 
-        themesBox = ObjectBox.boxStore.boxFor()
+        //themesBox = ObjectBox.boxStore.boxFor()
 
-        val themes = initThemesData()
-        themesBox.put(themes)
+        /*val themes = initThemesData()
+        themesBox.put(themes)*/
+        ThemeDao.init(this)
         WordDao.init(this)
 
-        val listToInsert = initWordsData()
-        WordDao.addWords(listToInsert)
+        ThemeDao.addThemes(initThemesData())
+        WordDao.addWords(initWordsData())
 
         Toast.makeText(this, "Données chargés", Toast.LENGTH_SHORT).show()
     }
