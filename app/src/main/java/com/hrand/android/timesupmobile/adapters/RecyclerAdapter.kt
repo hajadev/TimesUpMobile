@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView.Adapter
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.hrand.android.timesupmobile.R
 import com.hrand.android.timesupmobile.models.Word
 import com.hrand.android.timesupmobile.utils.inflate
@@ -50,7 +51,8 @@ class RecyclerAdapter(private val words: ArrayList<Word>)  : RecyclerView.Adapte
 
         //4
         override fun onClick(v: View) {
-            Log.d("RecyclerView", "CLICK!")
+            Log.d("haja", "CLICK!")
+            Toast.makeText(v.context, "Value = ${word?.value}", Toast.LENGTH_SHORT).show()
         }
 
         companion object {
