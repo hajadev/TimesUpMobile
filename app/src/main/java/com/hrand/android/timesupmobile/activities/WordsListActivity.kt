@@ -2,11 +2,11 @@ package com.hrand.android.timesupmobile.activities
 
 import android.content.Context
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import com.hrand.android.timesupmobile.R
 import com.hrand.android.timesupmobile.adapters.RecyclerAdapter
@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_words_list.*
 
 class WordsListActivity : AppCompatActivity() {
 
-    private lateinit var linearLayoutManager: LinearLayoutManager
+    private lateinit var linearLayoutManager: androidx.recyclerview.widget.LinearLayoutManager
     private lateinit var adapter: RecyclerAdapter
 
     //private lateinit var recyclerView: RecyclerView
@@ -26,10 +26,10 @@ class WordsListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_words_list)
 
         //recyclerView = findViewById(R.id.rv_words)
-        linearLayoutManager = LinearLayoutManager(this)
+        linearLayoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         recyclerView.layoutManager = linearLayoutManager
         // separation between items
-        recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        recyclerView.addItemDecoration(androidx.recyclerview.widget.DividerItemDecoration(this, androidx.recyclerview.widget.DividerItemDecoration.VERTICAL))
 
         btn_back.setOnClickListener { _ -> this.finish() }
 

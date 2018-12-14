@@ -4,6 +4,7 @@ buildscript {
     ext.kotlin_version = '1.1.51'
     ext.objectboxVersion = '2.1.0'
     ext.kotlinGradlePlugin_version = '1.2.71'
+    ext.googleMaterialVersion = '1.0.0'
     repositories {
         google()
         jcenter()

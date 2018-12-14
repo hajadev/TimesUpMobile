@@ -1,7 +1,7 @@
 package com.hrand.android.timesupmobile.adapters
 
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.RecyclerView.Adapter
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.Adapter
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +12,7 @@ import com.hrand.android.timesupmobile.utils.inflate
 import kotlinx.android.synthetic.main.recyclerview_item_row.view.*
 
 
-class RecyclerAdapter(private val words: ArrayList<Word>)  : RecyclerView.Adapter<RecyclerAdapter.WordHolder>()  {
+class RecyclerAdapter(private val words: ArrayList<Word>)  : androidx.recyclerview.widget.RecyclerView.Adapter<RecyclerAdapter.WordHolder>()  {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapter.WordHolder {
         val inflatedView = parent.inflate(R.layout.recyclerview_item_row, false)
         return WordHolder(inflatedView)
@@ -27,7 +27,7 @@ class RecyclerAdapter(private val words: ArrayList<Word>)  : RecyclerView.Adapte
         holder.bindWord(words[position])
     }
 
-    class WordHolder(v: View) : RecyclerView.ViewHolder(v), View.OnClickListener {
+    class WordHolder(v: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(v), View.OnClickListener {
 
         //2
         private var view: View = v
