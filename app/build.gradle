@@ -9,7 +9,7 @@ android {
     defaultConfig {
         applicationId "com.hrand.android.timesupmobile"
         minSdkVersion 15
-        targetSdkVersion 26
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
