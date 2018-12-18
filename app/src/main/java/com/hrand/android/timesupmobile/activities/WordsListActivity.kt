@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
+import com.google.android.material.snackbar.Snackbar
 import com.hrand.android.timesupmobile.R
 import com.hrand.android.timesupmobile.adapters.RecyclerAdapter
 import com.hrand.android.timesupmobile.daos.WordDao
@@ -36,10 +37,14 @@ class WordsListActivity : AppCompatActivity() {
         // retrieve the list word to the adapter
         WordDao.init(this)
 
-
-
         adapter = RecyclerAdapter(WordDao.getAll() as ArrayList<Word>)
         recyclerView.adapter = adapter
+
+        fab.setOnClickListener { view ->
+            Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null)
+                    .show()
+        }
 
         Log.i("haja", "On est dans le wordListActivity")
 
