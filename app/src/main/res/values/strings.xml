@@ -12,4 +12,7 @@
     <string name="back">Retour</string>
     <string name="loadData">Charger données</string>
     <string name="list_words">Liste des mots</string>
+    <string name="word">Mot</string>
+    <string name="difficulty">Difficulté</string>
+    <string name="themes">Thèmes</string>
 </resources>

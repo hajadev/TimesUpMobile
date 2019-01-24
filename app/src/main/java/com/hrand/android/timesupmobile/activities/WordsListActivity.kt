@@ -75,6 +75,12 @@ class WordsListActivity : AppCompatActivity() {
         fragmentTransaction.commit()
     }
 
+    fun closeAddDialog(){
+        fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.hide(fsd)
+        fragmentTransaction.commit()
+    }
+
     companion object {
         fun newIntent(context: Context): Intent {
             val intent = Intent(context, WordsListActivity::class.java)
