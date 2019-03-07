@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.objectbox:objectbox-android:2.1.0@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-objectbox-android-2.1.0.aar/4a7656a0b506bdfcca9cb36dd0a0919a/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-objectbox-android-2.1.0.aar/4a7656a0b506bdfcca9cb36dd0a0919a/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.objectbox/objectbox-android/2.1.0/3cd563bc678a3bb8cc8af464869e7dfd89269211/objectbox-android-2.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
