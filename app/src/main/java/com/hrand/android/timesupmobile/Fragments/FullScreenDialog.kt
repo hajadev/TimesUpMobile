@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.CheckBox
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.hrand.android.timesupmobile.R
@@ -16,10 +17,11 @@ import com.hrand.android.timesupmobile.models.Theme
 import kotlinx.android.synthetic.main.layout_add_word_dialog_2.*
 import kotlinx.android.synthetic.main.theme_list_view_with_checkbox_item.*
 
-class FullScreenDialog : DialogFragment(), AdapterView.OnItemSelectedListener {
+class FullScreenDialog : DialogFragment(), AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener {
 
     lateinit var themes: List<Theme>
     val DIFF_SPINNER_ID = 1
+    val THEME_CHECKBOX_ID = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +58,7 @@ class FullScreenDialog : DialogFragment(), AdapterView.OnItemSelectedListener {
             themes = ThemeDao.getAll()
             list_view_with_checkbox.adapter = ThemeBaseAdapter(currentContext, themes)
 
+/*
             // Set an item click listener for ListView
             list_view_with_checkbox.onItemClickListener = AdapterView.OnItemClickListener{
                 parent, view, position, id ->
@@ -65,8 +68,11 @@ class FullScreenDialog : DialogFragment(), AdapterView.OnItemSelectedListener {
                 Toast.makeText(this.context, "Theme clicked: ${selectedItem.value}", Toast.LENGTH_SHORT).show()
                 //list_view_item_checkbox.isChecked = list_view_item_checkbox.isChecked==false
 
-
-
+            }
+*/
+            with(list_view_with_checkbox){
+                list_view_with_checkbox.id = THEME_CHECKBOX_ID
+                onItemClickListener = this@FullScreenDialog
             }
 
         }
@@ -107,7 +113,22 @@ class FullScreenDialog : DialogFragment(), AdapterView.OnItemSelectedListener {
             else -> Toast.makeText(this.context, "Autre chose a été touché", Toast.LENGTH_SHORT).show()
         }
 
+    }
 
+    override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        when(parent?.id){
+            THEME_CHECKBOX_ID -> {
+                // Display the selected item text on TextView
+                Toast.makeText(this.context, "Theme clicked: ${(list_view_with_checkbox.adapter.getItem(position) as Theme).value}", Toast.LENGTH_SHORT).show()
+                val currentCheckbox = view?.findViewById<CheckBox>(R.id.list_view_item_checkbox)
+                if(currentCheckbox != null) {
+                    currentCheckbox.isChecked = !currentCheckbox.isChecked
+                }
+                //?.isChecked = true
+                //(view as ThemeBaseAdapter.ListViewItemHolder).getItemCheckbox()?.isChecked = true
+            }
+            else -> Toast.makeText(this.context, "Autre chose a été touché", Toast.LENGTH_SHORT).show()
+        }
     }
 
 }
