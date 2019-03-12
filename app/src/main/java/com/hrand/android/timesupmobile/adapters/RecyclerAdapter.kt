@@ -47,6 +47,12 @@ class RecyclerAdapter(private val words: ArrayList<Word>)  : androidx.recyclervi
             view.tv_id.text = word_id.toString()
             view.tv_difficulty.text = word_difficulty.toString()
             view.tv_value.text = word_value
+            if(!wordToBind.themes.isEmpty()){
+                view.tv_theme.text = wordToBind.themes.get(0).value
+            }
+            else{
+                view.tv_theme.text = "No Theme"
+            }
         }
 
         //4
