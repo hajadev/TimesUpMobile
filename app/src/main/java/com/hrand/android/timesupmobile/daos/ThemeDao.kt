@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.hrand.android.timesupmobile.models.Theme
 import com.hrand.android.timesupmobile.models.Theme_
+import com.hrand.android.timesupmobile.models.Theme_.value
 import com.hrand.android.timesupmobile.utils.ObjectBox
 import io.objectbox.Box
 import io.objectbox.kotlin.boxFor
@@ -21,6 +22,10 @@ object ThemeDao {
 
     fun getAll(): List<Theme>{
         return themesBox.query{order(Theme_.id)}.find()
+    }
+
+    fun get(themeValue : String): Theme?{
+        return themesBox.query { equal(value, themeValue) }.findFirst()
     }
 
     fun addThemes(themesList: List<Theme>){

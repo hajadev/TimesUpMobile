@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.hrand.android.timesupmobile.models.Word
 import com.hrand.android.timesupmobile.models.Word_
+import com.hrand.android.timesupmobile.models.Word_.value
 import com.hrand.android.timesupmobile.utils.ObjectBox
 import io.objectbox.Box
 import io.objectbox.kotlin.boxFor
@@ -21,6 +22,10 @@ object WordDao {
 
     fun getAll(): List<Word>{
         return wordsBox.query{order(Word_.id)}.find()
+    }
+
+    fun get(wordValue: String): Word? {
+        return wordsBox.query{equal(value, wordValue)}.findFirst()
     }
 
     fun addWords(wordsList: List<Word>){
