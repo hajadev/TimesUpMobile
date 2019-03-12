@@ -15,9 +15,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    //private lateinit var themesBox: Box<Theme>
-    //private lateinit var wordsBox: Box<Word>
-
     init {
         ThemeDao.init(this)
         WordDao.init(this)
@@ -49,13 +46,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun initDataBase(){
 
-        //themesBox = ObjectBox.boxStore.boxFor()
-
-        /*val themes = initThemesData()
-        themesBox.put(themes)*/
-
-        ThemeDao.addThemes(initThemesData())
-        WordDao.addWords(initWordsData())
+        //ThemeDao.addThemes(initThemesData())
+        //WordDao.addWords(initWordsData())
+        initData()
 
         Toast.makeText(this, "Données chargés", Toast.LENGTH_SHORT).show()
     }
