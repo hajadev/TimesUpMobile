@@ -18,6 +18,11 @@ class MainActivity : AppCompatActivity() {
     //private lateinit var themesBox: Box<Theme>
     //private lateinit var wordsBox: Box<Word>
 
+    init {
+        ThemeDao.init(this)
+        WordDao.init(this)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -48,8 +53,6 @@ class MainActivity : AppCompatActivity() {
 
         /*val themes = initThemesData()
         themesBox.put(themes)*/
-        ThemeDao.init(this)
-        WordDao.init(this)
 
         ThemeDao.addThemes(initThemesData())
         WordDao.addWords(initWordsData())
