@@ -31,13 +31,18 @@ class WordsListActivity : AppCompatActivity() {
         // retrieve the list word to the adapter
         WordDao.init(this)
 
-        adapter = RecyclerAdapter(WordDao.getAll() as ArrayList<Word>)
-        recyclerView.adapter = adapter
-
         fab.setOnClickListener { view ->
             val intent = AddWordActivity.newIntent(this)
             startActivity(intent)
         }
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        adapter = RecyclerAdapter(WordDao.getAll() as ArrayList<Word>)
+        recyclerView.adapter = adapter
 
     }
 

@@ -12,14 +12,20 @@ import androidx.appcompat.app.AppCompatActivity
 import com.hrand.android.timesupmobile.R
 import com.hrand.android.timesupmobile.adapters.ThemeBaseAdapter
 import com.hrand.android.timesupmobile.daos.ThemeDao
+import com.hrand.android.timesupmobile.daos.WordDao
 import com.hrand.android.timesupmobile.models.Theme
+import com.hrand.android.timesupmobile.models.Word
 import kotlinx.android.synthetic.main.activity_add_word.*
 
 class AddWordActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener {
 
     lateinit var themes: List<Theme>
+    lateinit var selectedThemes: MutableList<Theme>
+    lateinit var wordToInsert: Word
+
     val DIFF_SPINNER_ID = 1
     val THEME_CHECKBOX_ID = 2
+    var difficultyChoosen = 1L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,12 +36,20 @@ class AddWordActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
             this.finish()
         }
 
-        btn_back.setOnClickListener { _ -> this.finish() }
+        btn_back.setOnClickListener { this.finish() }
+
+        btn_validate_word.setOnClickListener {
+            addWord()
+
+            // Return to WordsListActivity
+            this.finish()
+        }
     }
 
     override fun onStart() {
         super.onStart()
         themes = ThemeDao.getAll()
+        selectedThemes = mutableListOf()
         list_view_with_checkbox.adapter = ThemeBaseAdapter(this, themes)
 
         with(list_view_with_checkbox){
@@ -73,6 +87,7 @@ class AddWordActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
             DIFF_SPINNER_ID -> {
                 Toast.makeText(this, "Difficulty choosen: ${difficulty_spinner.adapter.getItem(p2)}", Toast.LENGTH_SHORT).show()
                 difficulty_spinner.setSelection(p2)
+                difficultyChoosen = (difficulty_spinner.adapter.getItem(p2) as String).toLong()
             }
             else -> Toast.makeText(this, "Autre chose a été touché", Toast.LENGTH_SHORT).show()
         }
@@ -81,14 +96,38 @@ class AddWordActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         when(parent?.id){
             THEME_CHECKBOX_ID -> {
+
+                val themeChoosen = (list_view_with_checkbox.adapter.getItem(position) as Theme)
+
                 // Display the selected item text on TextView
-                Toast.makeText(this, "Theme clicked: ${(list_view_with_checkbox.adapter.getItem(position) as Theme).value}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Theme clicked: ${themeChoosen.value}", Toast.LENGTH_SHORT).show()
+
                 val currentCheckbox = view?.findViewById<CheckBox>(R.id.list_view_item_checkbox)
                 if(currentCheckbox != null) {
                     currentCheckbox.isChecked = !currentCheckbox.isChecked
+                    if(currentCheckbox.isChecked){
+                        selectedThemes.add(themeChoosen)
+                    }
+                    else{
+                        selectedThemes.remove(themeChoosen)
+                    }
                 }
             }
             else -> Toast.makeText(this, "Autre chose a été touché", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun addWord(){
+        if(!input_word.text.isEmpty() && !input_word.text.equals("")){
+            wordToInsert = Word(value = input_word.text.toString(), difficulty = difficultyChoosen)
+            for (t in selectedThemes) {
+                wordToInsert.themes.add(t)
+            }
+            WordDao.addWord(wordToInsert)
+            Toast.makeText(this, "Mot ${input_word.text} ajouté", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            Toast.makeText(this, "Un champ est mal renseigné", Toast.LENGTH_SHORT).show()
         }
     }
 
