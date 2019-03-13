@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
-    android:clickable="true"
-    android:focusable="true">
+    android:background="@color/colorWhite">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/abl"
@@ -34,7 +33,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginEnd="20dp"
         android:layout_below="@+id/abl"
-        android:layout_above="@+id/btn_validate_word">
+        android:layout_above="@+id/llBtn">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_layout_word"
@@ -95,12 +94,31 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_validate_word"
-        android:layout_width="150dp"
+    <LinearLayout
+        android:id="@+id/llBtn"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add_words"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"/>
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/back"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp" />
+
+        <Button
+            android:id="@+id/btn_validate_word"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/add_words"
+            />
+
+    </LinearLayout>
+
 
 </RelativeLayout>

@@ -37,12 +37,12 @@
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"/>
 
-        <fragment android:name="com.hrand.android.timesupmobile.Fragments.FullScreenDialog"
+<!--        <fragment android:name="com.hrand.android.timesupmobile.Fragments.FullScreenDialog"
             android:id="@+id/fsd"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
-
+-->
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

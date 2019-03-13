@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".activities.OptionActivity" />
         <activity android:name=".activities.WordsListActivity"></activity>
+        <activity android:name=".activities.AddWordActivity" />
     </application>
 
 </manifest>

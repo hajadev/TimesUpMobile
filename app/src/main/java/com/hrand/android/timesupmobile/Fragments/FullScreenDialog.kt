@@ -45,11 +45,7 @@ class FullScreenDialog : DialogFragment(), AdapterView.OnItemSelectedListener, A
             dialog.window.setLayout(width, height)
         }
         toolbar.setNavigationOnClickListener { v ->
-            Toast.makeText(this.context, "Click !!!", Toast.LENGTH_SHORT).show()
-
-            if(currentAct is WordsListActivity){
-                currentAct.closeAddDialog()
-            }
+            currentAct?.finish()
         }
 
         if(currentAct!=null && context!=null) {
@@ -58,18 +54,6 @@ class FullScreenDialog : DialogFragment(), AdapterView.OnItemSelectedListener, A
             themes = ThemeDao.getAll()
             list_view_with_checkbox.adapter = ThemeBaseAdapter(currentContext, themes)
 
-/*
-            // Set an item click listener for ListView
-            list_view_with_checkbox.onItemClickListener = AdapterView.OnItemClickListener{
-                parent, view, position, id ->
-                val selectedItem = parent.getItemAtPosition(position) as Theme
-
-                // Display the selected item text on TextView
-                Toast.makeText(this.context, "Theme clicked: ${selectedItem.value}", Toast.LENGTH_SHORT).show()
-                //list_view_item_checkbox.isChecked = list_view_item_checkbox.isChecked==false
-
-            }
-*/
             with(list_view_with_checkbox){
                 list_view_with_checkbox.id = THEME_CHECKBOX_ID
                 onItemClickListener = this@FullScreenDialog
@@ -88,8 +72,7 @@ class FullScreenDialog : DialogFragment(), AdapterView.OnItemSelectedListener, A
             // Apply the adapter to the spinner
             difficulty_spinner.adapter = adapter
 
-            //difficulty_spinner.setOnItemClickListener { adapterView, view, i, l -> Toast.makeText(this.context, "Difficulty choosen: ${i}", Toast.LENGTH_SHORT).show() }
-        }
+       }
 
         with(difficulty_spinner){
             difficulty_spinner.id = DIFF_SPINNER_ID
@@ -124,8 +107,6 @@ class FullScreenDialog : DialogFragment(), AdapterView.OnItemSelectedListener, A
                 if(currentCheckbox != null) {
                     currentCheckbox.isChecked = !currentCheckbox.isChecked
                 }
-                //?.isChecked = true
-                //(view as ThemeBaseAdapter.ListViewItemHolder).getItemCheckbox()?.isChecked = true
             }
             else -> Toast.makeText(this.context, "Autre chose a été touché", Toast.LENGTH_SHORT).show()
         }
