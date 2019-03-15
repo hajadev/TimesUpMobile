@@ -15,4 +15,7 @@
     <string name="word">Mot</string>
     <string name="difficulty">Difficulté</string>
     <string name="themes">Thèmes</string>
+    <string name="time_per_session">Temps par manche</string>
+    <string name="validate">Valider</string>
+    <string name="background_image">fond d\'ecran</string>
 </resources>

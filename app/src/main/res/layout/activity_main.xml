@@ -5,15 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.hrand.android.timesupmobile.activities.MainActivity">
-    <TextView
-        android:id="@+id/main_title"
+
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/main_title"
-        android:textStyle="bold|italic"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        android:layout_alignParentTop="true"/>
+        android:layout_height="match_parent"
+        android:src="@drawable/bg_blue"
+        android:scaleType="center"
+        android:contentDescription="@string/background_image" />
+
+    <ImageView
+        android:id="@+id/main_title"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/logo_timesup"
+        android:scaleType="fitXY"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"/>
 
     <LinearLayout
         android:id="@+id/llMenuBtn"

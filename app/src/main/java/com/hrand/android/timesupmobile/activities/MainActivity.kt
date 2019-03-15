@@ -27,6 +27,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initBtnListener(){
+        btn_new_game.setOnClickListener {
+            val intent = NewGameActivity.newIntent(this)
+            startActivity(intent)
+        }
+
         btn_exit.setOnClickListener { v -> this.finish() }
 
         btn_option.setOnClickListener {v ->
