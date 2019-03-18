@@ -26,6 +26,8 @@ class NewGameActivity : AppCompatActivity() {
             btnMedium.setImageResource(R.drawable.badge_normal)
             btnHard.setImageResource(R.drawable.badge_difficile)
             btnExpert.setImageResource(R.drawable.badge_expert)
+
+            difficulty = 1
         }
 
         btnMedium.setOnClickListener {
@@ -33,6 +35,8 @@ class NewGameActivity : AppCompatActivity() {
             btnMedium.setImageResource(R.drawable.badge_normal_selected)
             btnHard.setImageResource(R.drawable.badge_difficile)
             btnExpert.setImageResource(R.drawable.badge_expert)
+
+            difficulty = 2
         }
 
         btnHard.setOnClickListener {
@@ -40,6 +44,8 @@ class NewGameActivity : AppCompatActivity() {
             btnMedium.setImageResource(R.drawable.badge_normal)
             btnHard.setImageResource(R.drawable.badge_difficile_selected)
             btnExpert.setImageResource(R.drawable.badge_expert)
+
+            difficulty = 3
         }
 
         btnExpert.setOnClickListener {
@@ -47,6 +53,8 @@ class NewGameActivity : AppCompatActivity() {
             btnMedium.setImageResource(R.drawable.badge_normal)
             btnHard.setImageResource(R.drawable.badge_difficile)
             btnExpert.setImageResource(R.drawable.badge_expert_selected)
+
+            difficulty = 4
         }
 
     }
