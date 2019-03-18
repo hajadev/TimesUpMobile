@@ -2,8 +2,10 @@ package com.hrand.android.timesupmobile.activities
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.hrand.android.timesupmobile.R
 import kotlinx.android.synthetic.main.activity_new_game.*
 
@@ -17,9 +19,25 @@ class NewGameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_game)
 
+        listenerInitialization()
+
+    }
+
+    companion object {
+        fun newIntent(context: Context): Intent {
+            val intent = Intent(context, NewGameActivity::class.java)
+            return intent
+        }
+    }
+
+    fun listenerInitialization(){
+
+        /* Cancel Button */
         btn_back.setOnClickListener {
             this.finish()
         }
+
+        /* Difficulty Listeners */
 
         btnEasy.setOnClickListener {
             btnEasy.setImageResource(R.drawable.badge_facile_selected)
@@ -57,16 +75,29 @@ class NewGameActivity : AppCompatActivity() {
             difficulty = 4
         }
 
-    }
+        /* Duration Listeners */
 
-    companion object {
-        fun newIntent(context: Context): Intent {
-            val intent = Intent(context, NewGameActivity::class.java)
-            return intent
+        tv30.setOnClickListener {
+            tv30.setTextColor(ContextCompat.getColor(this, R.color.colorGreen))
+            tv40.setTextColor(ContextCompat.getColor(this, R.color.colorYellow))
+            tv50.setTextColor(ContextCompat.getColor(this, R.color.colorYellow))
+
+            duration = 30
         }
-    }
+        tv40.setOnClickListener {
+            tv30.setTextColor(ContextCompat.getColor(this, R.color.colorYellow))
+            tv40.setTextColor(ContextCompat.getColor(this, R.color.colorGreen))
+            tv50.setTextColor(ContextCompat.getColor(this, R.color.colorYellow))
 
-    fun difficulty_initialization(){
+            duration = 40
+        }
+        tv50.setOnClickListener {
+            tv30.setTextColor(ContextCompat.getColor(this, R.color.colorYellow))
+            tv40.setTextColor(ContextCompat.getColor(this, R.color.colorYellow))
+            tv50.setTextColor(ContextCompat.getColor(this, R.color.colorGreen))
+
+            duration = 50
+        }
 
     }
 

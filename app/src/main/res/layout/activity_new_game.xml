@@ -14,7 +14,7 @@
     <RelativeLayout
         android:id="@+id/llTitle"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:layout_alignParentTop="true">
 
         <ImageView
@@ -67,10 +67,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginTop="50dp"
         android:layout_below="@+id/llNbPlayer">
 
@@ -81,15 +81,43 @@
             android:textSize="20sp"
             android:textColor="@color/colorYellow"
             android:textStyle="bold"
-            android:text="@string/time_per_session"/>
+            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/time_per_session"
+             />
 
-        <SeekBar
-            android:id="@+id/sbTimeValue"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_gravity="center_vertical"/>
+        <TextView
+            android:id="@+id/tv30"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:fontFamily="@font/fff_tusj"
+            android:textSize="35sp"
+            android:textColor="@color/colorGreen"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:text="30"/>
+
+        <TextView
+            android:id="@+id/tv40"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:fontFamily="@font/fff_tusj"
+            android:textSize="35sp"
+            android:textColor="@color/colorYellow"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:text="40"/>
+
+        <TextView
+            android:id="@+id/tv50"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:fontFamily="@font/fff_tusj"
+            android:textSize="35sp"
+            android:textColor="@color/colorYellow"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:text="50"/>
 
     </LinearLayout>
 
@@ -98,10 +126,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginTop="40dp"
         android:layout_below="@+id/llSessionDuration" >
 
