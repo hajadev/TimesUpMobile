@@ -190,9 +190,11 @@
             android:id="@+id/btn_back"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/cancel"
-            android:background="@null"
+            android:src="@drawable/cancel2"
+            android:background="@drawable/cancel_custom_button"
             android:scaleType="fitXY"
+            android:gradientRadius="90"
+            android:angle="90"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -200,9 +202,11 @@
             android:id="@+id/btn_validate"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/validate"
-            android:background="@null"
+            android:src="@drawable/validate2"
+            android:background="@drawable/validate_custom_button"
             android:scaleType="fitXY"
+            android:gradientRadius="90"
+            android:angle="90"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 

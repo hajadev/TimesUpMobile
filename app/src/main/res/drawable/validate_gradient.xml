@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+<!--
+    <item>
+        <bitmap android:src="@drawable/validate"/>
+    </item>
+-->
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android">
+            <solid android:color="#FFFFFF" />
+            <corners android:radius="40dp" />
+            <stroke android:color="#0f9202" android:width="4dp" />
+            <gradient android:background="@null" android:gradientRadius="90" android:angle="90" android:startColor="#ababab" android:centerColor="#FFFFFF" android:endColor="#ababab"/>
+        </shape>
+    </item>
+</layer-list>
