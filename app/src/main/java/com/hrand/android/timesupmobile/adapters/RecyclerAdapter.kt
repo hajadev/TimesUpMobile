@@ -1,11 +1,10 @@
 package com.hrand.android.timesupmobile.adapters
 
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Adapter
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.hrand.android.timesupmobile.R
 import com.hrand.android.timesupmobile.models.Word
 import com.hrand.android.timesupmobile.utils.inflate
@@ -27,7 +26,7 @@ class RecyclerAdapter(private val words: ArrayList<Word>)  : androidx.recyclervi
         holder.bindWord(words[position])
     }
 
-    class WordHolder(v: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(v), View.OnClickListener {
+    class WordHolder(v: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(v), View.OnClickListener, View.OnLongClickListener {
 
         //2
         private var view: View = v
@@ -36,6 +35,7 @@ class RecyclerAdapter(private val words: ArrayList<Word>)  : androidx.recyclervi
         //3
         init {
             v.setOnClickListener(this)
+            v.setOnLongClickListener(this)
         }
 
         fun bindWord(wordToBind : Word){
@@ -58,7 +58,42 @@ class RecyclerAdapter(private val words: ArrayList<Word>)  : androidx.recyclervi
         //4
         override fun onClick(v: View) {
             Log.d("haja", "CLICK!")
-            Toast.makeText(v.context, "Value = ${word?.value}", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(v.context, "Value = ${word?.value}", Toast.LENGTH_SHORT).show()
+            /*
+            val builder = AlertDialog.Builder(v.context)
+            builder.setTitle("Menu")
+            val animals = arrayOf("horse", "cow", "camel", "sheep", "goat")
+
+            builder.setItems(animals) { _, i ->
+                when(i){
+                    0 -> Toast.makeText(v.context, "horse", Toast.LENGTH_SHORT).show()
+                    1 -> Toast.makeText(v.context, "cow", Toast.LENGTH_SHORT).show()
+                    else -> Toast.makeText(v.context, "other", Toast.LENGTH_SHORT).show()
+                }
+            }
+            val dialog = builder.create()
+            dialog.show()
+            */
+        }
+
+        override fun onLongClick(v: View): Boolean {
+            Toast.makeText(v.context, "Long Click on ${word?.value}", Toast.LENGTH_SHORT).show()
+
+            val builder = AlertDialog.Builder(v.context)
+            builder.setTitle("Menu")
+            val animals = arrayOf("Modifier", "Supprimer")
+
+            builder.setItems(animals) { _, i ->
+                when(i){
+                    0 -> Toast.makeText(v.context, "Modification...", Toast.LENGTH_SHORT).show()
+                    1 -> Toast.makeText(v.context, "Suppression", Toast.LENGTH_SHORT).show()
+                    else -> Toast.makeText(v.context, "other", Toast.LENGTH_SHORT).show()
+                }
+            }
+            val dialog = builder.create()
+            dialog.show()
+
+            return true
         }
 
         companion object {
