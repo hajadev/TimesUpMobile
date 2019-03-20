@@ -36,4 +36,9 @@ object WordDao {
         wordsBox.put(word)
     }
 
+    fun deleteWord(word: Word?){
+        if(word != null)
+            wordsBox.remove(word)
+    }
+
 }

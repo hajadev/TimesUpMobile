@@ -1,40 +1,54 @@
 package com.hrand.android.timesupmobile.adapters
 
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import com.hrand.android.timesupmobile.R
+import com.hrand.android.timesupmobile.daos.WordDao
 import com.hrand.android.timesupmobile.models.Word
 import com.hrand.android.timesupmobile.utils.inflate
 import kotlinx.android.synthetic.main.recyclerview_item_row.view.*
 
 
-class RecyclerAdapter(private val words: ArrayList<Word>)  : androidx.recyclerview.widget.RecyclerView.Adapter<RecyclerAdapter.WordHolder>()  {
+class RecyclerAdapter(private val words: List<Word>)  : androidx.recyclerview.widget.RecyclerView.Adapter<RecyclerAdapter.WordHolder>()  {
+
+    internal lateinit var itemLongClickListener: ItemLongClickListener
+    private var wordList = words
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapter.WordHolder {
         val inflatedView = parent.inflate(R.layout.recyclerview_item_row, false)
         return WordHolder(inflatedView)
-
     }
 
     override fun getItemCount(): Int {
-        return words.size
+        return wordList.size
     }
 
     override fun onBindViewHolder(holder: RecyclerAdapter.WordHolder, position: Int) {
-        holder.bindWord(words[position])
+        holder.bindWord(wordList[position])
     }
 
-    class WordHolder(v: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(v), View.OnClickListener, View.OnLongClickListener {
+    fun getElt(pos: Int): Word {
+        return wordList.get(pos)
+    }
 
-        //2
+    fun setWordsList(wl: List<Word>){
+        wordList = wl
+    }
+
+    fun setOnLongClickListener(longClickListener: ItemLongClickListener){
+        itemLongClickListener = longClickListener
+    }
+
+    interface ItemLongClickListener{
+        fun onItemLongClick(view: View, position: Int)
+    }
+
+    inner class WordHolder(v: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(v),/* View.OnClickListener,*/ View.OnLongClickListener {
+
         private var view: View = v
         private var word: Word? = null
 
-        //3
         init {
-            v.setOnClickListener(this)
             v.setOnLongClickListener(this)
         }
 
@@ -55,50 +69,9 @@ class RecyclerAdapter(private val words: ArrayList<Word>)  : androidx.recyclervi
             }
         }
 
-        //4
-        override fun onClick(v: View) {
-            Log.d("haja", "CLICK!")
-            //Toast.makeText(v.context, "Value = ${word?.value}", Toast.LENGTH_SHORT).show()
-            /*
-            val builder = AlertDialog.Builder(v.context)
-            builder.setTitle("Menu")
-            val animals = arrayOf("horse", "cow", "camel", "sheep", "goat")
-
-            builder.setItems(animals) { _, i ->
-                when(i){
-                    0 -> Toast.makeText(v.context, "horse", Toast.LENGTH_SHORT).show()
-                    1 -> Toast.makeText(v.context, "cow", Toast.LENGTH_SHORT).show()
-                    else -> Toast.makeText(v.context, "other", Toast.LENGTH_SHORT).show()
-                }
-            }
-            val dialog = builder.create()
-            dialog.show()
-            */
-        }
-
         override fun onLongClick(v: View): Boolean {
-            Toast.makeText(v.context, "Long Click on ${word?.value}", Toast.LENGTH_SHORT).show()
-
-            val builder = AlertDialog.Builder(v.context)
-            builder.setTitle("Menu")
-            val animals = arrayOf("Modifier", "Supprimer")
-
-            builder.setItems(animals) { _, i ->
-                when(i){
-                    0 -> Toast.makeText(v.context, "Modification...", Toast.LENGTH_SHORT).show()
-                    1 -> Toast.makeText(v.context, "Suppression", Toast.LENGTH_SHORT).show()
-                    else -> Toast.makeText(v.context, "other", Toast.LENGTH_SHORT).show()
-                }
-            }
-            val dialog = builder.create()
-            dialog.show()
-
+            itemLongClickListener.onItemLongClick(v, adapterPosition)
             return true
-        }
-
-        companion object {
-            //5
-            private val WORD_KEY = "WORD"
         }
 
     }
