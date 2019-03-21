@@ -3,14 +3,9 @@ package com.hrand.android.timesupmobile.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import com.hrand.android.timesupmobile.R
 import com.hrand.android.timesupmobile.daos.ThemeDao
 import com.hrand.android.timesupmobile.daos.WordDao
-import com.hrand.android.timesupmobile.models.Theme
-import com.hrand.android.timesupmobile.utils.*
-import io.objectbox.Box
-import io.objectbox.kotlin.boxFor
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
