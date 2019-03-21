@@ -28,7 +28,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_below="@+id/main_title"
-        android:layout_above="@+id/sample_text"
+        android:layout_above="@+id/dev_contact"
         >
 
         <Button
