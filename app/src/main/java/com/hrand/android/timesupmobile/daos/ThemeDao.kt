@@ -36,4 +36,8 @@ object ThemeDao {
         themesBox.put(theme)
     }
 
+    fun clearThemes(){
+        themesBox.removeAll()
+    }
+
 }

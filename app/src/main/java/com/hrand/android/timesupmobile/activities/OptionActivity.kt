@@ -8,6 +8,9 @@ import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import com.hrand.android.timesupmobile.R
+import com.hrand.android.timesupmobile.daos.ThemeDao
+import com.hrand.android.timesupmobile.daos.WordDao
+import com.hrand.android.timesupmobile.utils.initData
 
 class OptionActivity : AppCompatActivity() {
 
@@ -25,6 +28,9 @@ class OptionActivity : AppCompatActivity() {
 
         val btnReset = findViewById<Button>(R.id.btn_reset_content)
         btnReset.setOnClickListener { _ ->
+            WordDao.clearWords()
+            ThemeDao.clearThemes()
+            initData()
             Toast.makeText(this, R.string.content_reset, Toast.LENGTH_SHORT).show()
         }
 

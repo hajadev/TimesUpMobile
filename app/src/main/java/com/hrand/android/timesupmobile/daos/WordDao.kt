@@ -24,6 +24,10 @@ object WordDao {
         return wordsBox.query{order(Word_.id)}.find()
     }
 
+    fun getAllFilteredByName(): List<Word>{
+        return wordsBox.query{order(Word_.value)}.find()
+    }
+
     fun get(wordValue: String): Word? {
         return wordsBox.query{equal(value, wordValue)}.findFirst()
     }
@@ -39,6 +43,10 @@ object WordDao {
     fun deleteWord(word: Word?){
         if(word != null)
             wordsBox.remove(word)
+    }
+
+    fun clearWords(){
+        wordsBox.removeAll()
     }
 
 }
