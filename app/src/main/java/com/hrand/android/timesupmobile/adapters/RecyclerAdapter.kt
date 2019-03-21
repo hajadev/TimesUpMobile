@@ -58,7 +58,7 @@ class RecyclerAdapter(private val words: List<Word>)  : androidx.recyclerview.wi
             val word_difficulty = wordToBind.difficulty
             val word_value = wordToBind.value
 
-            view.tv_id.text = word_id.toString()
+ //           view.tv_id.text = word_id.toString()
             view.tv_difficulty.text = word_difficulty.toString()
             view.tv_value.text = word_value
             if(!wordToBind.themes.isEmpty()){

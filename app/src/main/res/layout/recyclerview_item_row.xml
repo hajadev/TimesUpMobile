@@ -3,25 +3,38 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="50dp">
-    <TextView
+<!--    <TextView
         android:id="@+id/tv_id"
         android:layout_width="50dp"
         android:layout_height="match_parent"
         android:gravity="center"/>
+-->
     <TextView
         android:id="@+id/tv_value"
         android:layout_width="200dp"
         android:layout_height="match_parent"
-        android:gravity="center"/>
+        android:textColor="@color/colorYellow"
+        android:textSize="20sp"
+        android:textAlignment="textStart"
+        android:gravity="start|center_vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp" />
     <TextView
         android:id="@+id/tv_difficulty"
         android:layout_width="50dp"
         android:layout_height="match_parent"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="@color/colorYellow"
+        android:textSize="20sp"/>
     <TextView
         android:id="@+id/tv_theme"
         android:layout_width="100dp"
         android:layout_height="match_parent"
-        android:gravity="center"/>
+        android:textColor="@color/colorYellow"
+        android:textSize="20sp"
+        android:textAlignment="textStart"
+        android:gravity="start|center_vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"/>
 
 </LinearLayout>
