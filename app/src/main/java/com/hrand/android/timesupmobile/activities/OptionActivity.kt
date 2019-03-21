@@ -11,6 +11,7 @@ import com.hrand.android.timesupmobile.R
 import com.hrand.android.timesupmobile.daos.ThemeDao
 import com.hrand.android.timesupmobile.daos.WordDao
 import com.hrand.android.timesupmobile.utils.initData
+import kotlinx.android.synthetic.main.activity_option.*
 
 class OptionActivity : AppCompatActivity() {
 
@@ -34,6 +35,15 @@ class OptionActivity : AppCompatActivity() {
             Toast.makeText(this, R.string.content_reset, Toast.LENGTH_SHORT).show()
         }
 
+        btn_load_data.setOnClickListener { v ->
+            initDataBase()
+        }
+
+    }
+
+    private fun initDataBase(){
+        initData()
+        Toast.makeText(this, "Données chargés", Toast.LENGTH_SHORT).show()
     }
 
     companion object {

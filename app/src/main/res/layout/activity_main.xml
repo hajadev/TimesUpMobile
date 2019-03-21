@@ -56,14 +56,6 @@
             />
 
         <Button
-            android:id="@+id/btn_load_data"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text="@string/loadData"
-            android:layout_gravity="center_horizontal"
-            />
-
-        <Button
             android:id="@+id/btn_words_list"
             android:layout_width="200dp"
             android:layout_height="wrap_content"

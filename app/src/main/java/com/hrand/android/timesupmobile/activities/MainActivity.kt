@@ -39,23 +39,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        btn_load_data.setOnClickListener { v ->
-            initDataBase()
-        }
-
         btn_words_list.setOnClickListener { v ->
             val intent1 = WordsListActivity.newIntent(this)
             Log.i("haja", "listing des mots")
             startActivity(intent1) }
-    }
-
-    private fun initDataBase(){
-
-        //ThemeDao.addThemes(initThemesData())
-        //WordDao.addWords(initWordsData())
-        initData()
-
-        Toast.makeText(this, "Données chargés", Toast.LENGTH_SHORT).show()
     }
 
     /**
