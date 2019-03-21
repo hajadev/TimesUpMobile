@@ -86,7 +86,7 @@ class WordsListActivity : AppCompatActivity(), RecyclerAdapter.ItemLongClickList
     fun initAdapter(){
         // retrieve the list word to the adapter
         WordDao.init(this)
-        wordsList = WordDao.getAll() as ArrayList<Word>
+        wordsList = WordDao.getAllFilteredByName() as ArrayList<Word>
         adapter = RecyclerAdapter(wordsList)
         adapter.setOnLongClickListener(this)
 

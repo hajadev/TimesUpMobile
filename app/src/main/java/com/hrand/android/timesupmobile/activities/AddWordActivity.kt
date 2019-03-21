@@ -39,10 +39,10 @@ class AddWordActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
         btn_back.setOnClickListener { this.finish() }
 
         btn_validate_word.setOnClickListener {
-            addWord()
-
-            // Return to WordsListActivity
-            this.finish()
+            if(addWord()) {
+                // Return to WordsListActivity if adding ok
+                this.finish()
+            }
         }
     }
 
@@ -117,17 +117,25 @@ class AddWordActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
         }
     }
 
-    fun addWord(){
+    fun addWord(): Boolean{
         if(!input_word.text.isEmpty() && !input_word.text.equals("")){
-            wordToInsert = Word(value = input_word.text.toString(), difficulty = difficultyChoosen)
-            for (t in selectedThemes) {
-                wordToInsert.themes.add(t)
+            if(selectedThemes.size > 0) {
+                wordToInsert = Word(value = input_word.text.toString(), difficulty = difficultyChoosen)
+                for (t in selectedThemes) {
+                    wordToInsert.themes.add(t)
+                }
+                WordDao.addWord(wordToInsert)
+                Toast.makeText(this, "Mot ${input_word.text} ajouté", Toast.LENGTH_SHORT).show()
+                return true
             }
-            WordDao.addWord(wordToInsert)
-            Toast.makeText(this, "Mot ${input_word.text} ajouté", Toast.LENGTH_SHORT).show()
+            else{
+                Toast.makeText(this, "Vous devez selectionner au moins 1 Thème...", Toast.LENGTH_SHORT).show()
+                return false
+            }
         }
         else{
             Toast.makeText(this, "Un champ est mal renseigné", Toast.LENGTH_SHORT).show()
+            return false
         }
     }
 
