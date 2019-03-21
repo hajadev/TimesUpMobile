@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.hrand.android.timesupmobile.R
 import kotlinx.android.synthetic.main.activity_new_game.*
@@ -13,6 +14,7 @@ class NewGameActivity : AppCompatActivity() {
 
     var difficulty = 2
     var duration = 30
+    var nb_team = 2
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -97,6 +99,27 @@ class NewGameActivity : AppCompatActivity() {
             tv50.setTextColor(ContextCompat.getColor(this, R.color.colorGreen))
 
             duration = 50
+        }
+
+        btn2player.setOnClickListener{
+            nb_team = 2
+            btn2player.setBackgroundResource(R.drawable.selected_nb_player)
+            btn3player.setBackgroundResource(R.drawable.select_nb_player)
+            btn4player.setBackgroundResource(R.drawable.select_nb_player)
+        }
+
+        btn3player.setOnClickListener{
+            nb_team = 3
+            btn2player.setBackgroundResource(R.drawable.select_nb_player)
+            btn3player.setBackgroundResource(R.drawable.selected_nb_player)
+            btn4player.setBackgroundResource(R.drawable.select_nb_player)
+        }
+
+        btn4player.setOnClickListener{
+            nb_team = 4
+            btn2player.setBackgroundResource(R.drawable.select_nb_player)
+            btn3player.setBackgroundResource(R.drawable.select_nb_player)
+            btn4player.setBackgroundResource(R.drawable.selected_nb_player)
         }
 
     }

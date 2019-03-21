@@ -35,30 +35,36 @@
         
         <ImageButton
             android:id="@+id/btn2player"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:src="@drawable/p_2_players"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/p_2_t"
             android:layout_toLeftOf="@+id/btn3player"
-            android:layout_toStartOf="@+id/btn3player" />
+            android:layout_toStartOf="@+id/btn3player"
+            android:scaleType="fitXY"
+            android:background="@drawable/selected_nb_player"/>
 
         <ImageButton
             android:id="@+id/btn3player"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:src="@drawable/p_2_players"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/p_3_t"
             android:layout_marginLeft="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginEnd="30dp"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitXY"
+            android:background="@drawable/select_nb_player"/>
 
         <ImageButton
             android:id="@+id/btn4player"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:src="@drawable/p_2_players"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/p_4_t"
             android:layout_toRightOf="@+id/btn3player"
-            android:layout_toEndOf="@+id/btn3player"/>
+            android:layout_toEndOf="@+id/btn3player"
+            android:scaleType="fitXY"
+            android:background="@drawable/select_nb_player"/>
 
     </RelativeLayout>
 
