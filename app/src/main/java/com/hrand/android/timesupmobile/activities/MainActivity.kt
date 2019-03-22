@@ -35,9 +35,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         btn_words_list.setOnClickListener { v ->
-            val intent1 = WordsListActivity.newIntent(this)
-            Log.i("haja", "listing des mots")
-            startActivity(intent1) }
+            val intent = WordsListActivity.newIntent(this)
+            startActivity(intent) }
+
+        btn_rules.setOnClickListener {
+            val intent = RulesActivity.newIntent(this)
+            startActivity(intent)
+        }
+
     }
 
     /**

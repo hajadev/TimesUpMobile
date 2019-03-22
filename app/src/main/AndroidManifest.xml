@@ -21,6 +21,7 @@
         <activity android:name=".activities.WordsListActivity"></activity>
         <activity android:name=".activities.AddWordActivity" />
         <activity android:name=".activities.NewGameActivity" />
+        <activity android:name=".activities.RulesActivity" />
     </application>
 
 </manifest>

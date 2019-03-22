@@ -20,4 +20,5 @@
     <string name="theme">Thème</string>
     <string name="word">Mot</string>
     <string name="diff">Diff.</string>
+    <string name="rules">Règles</string>
 </resources>

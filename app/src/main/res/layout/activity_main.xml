@@ -66,6 +66,14 @@
             />
 
         <Button
+            android:id="@+id/btn_rules"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/rules"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <Button
             android:id="@+id/btn_exit"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
