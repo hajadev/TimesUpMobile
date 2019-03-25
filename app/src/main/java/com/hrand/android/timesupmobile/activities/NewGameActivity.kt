@@ -32,7 +32,7 @@ class NewGameActivity : AppCompatActivity() {
         }
     }
 
-    fun listenerInitialization(){
+    private fun listenerInitialization(){
 
         /* Cancel Button */
         btn_back.setOnClickListener {
