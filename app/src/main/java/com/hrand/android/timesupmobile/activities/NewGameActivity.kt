@@ -14,7 +14,7 @@ class NewGameActivity : AppCompatActivity() {
 
     var difficulty = 2
     var duration = 30
-    var nb_team = 2
+    var nbTeam = 2
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -102,21 +102,21 @@ class NewGameActivity : AppCompatActivity() {
         }
 
         btn2player.setOnClickListener{
-            nb_team = 2
+            nbTeam = 2
             btn2player.setBackgroundResource(R.drawable.selected_nb_player)
             btn3player.setBackgroundResource(R.drawable.select_nb_player)
             btn4player.setBackgroundResource(R.drawable.select_nb_player)
         }
 
         btn3player.setOnClickListener{
-            nb_team = 3
+            nbTeam = 3
             btn2player.setBackgroundResource(R.drawable.select_nb_player)
             btn3player.setBackgroundResource(R.drawable.selected_nb_player)
             btn4player.setBackgroundResource(R.drawable.select_nb_player)
         }
 
         btn4player.setOnClickListener{
-            nb_team = 4
+            nbTeam = 4
             btn2player.setBackgroundResource(R.drawable.select_nb_player)
             btn3player.setBackgroundResource(R.drawable.select_nb_player)
             btn4player.setBackgroundResource(R.drawable.selected_nb_player)
