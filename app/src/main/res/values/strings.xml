@@ -21,4 +21,10 @@
     <string name="word">Mot</string>
     <string name="diff">Diff.</string>
     <string name="rules">Règles</string>
+    <string name="play">Jouer</string>
+    <string name="session">Manche</string>
+    <string name="describe_the_word">Décrivez le mot</string>
+    <string name="word_to_word">Mot pour mot</string>
+    <string name="mimic_the_word">Mimez le mot</string>
+    <string name="error">Erreur</string>
 </resources>

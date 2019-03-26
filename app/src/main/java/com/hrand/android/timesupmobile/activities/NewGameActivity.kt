@@ -122,6 +122,14 @@ class NewGameActivity : AppCompatActivity() {
             btn4player.setBackgroundResource(R.drawable.selected_nb_player)
         }
 
+        btn_validate.setOnClickListener {
+            val intent = Intent(this, GameActivity::class.java)
+            intent.putExtra("difficulty", difficulty)
+            intent.putExtra("duration", duration)
+            intent.putExtra("nbTeam", nbTeam)
+            startActivity(intent)
+        }
+
     }
 
 }
