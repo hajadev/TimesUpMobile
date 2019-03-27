@@ -2,6 +2,8 @@ package com.hrand.android.timesupmobile.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.hrand.android.timesupmobile.Fragments.GameTeamActionFragment
+import com.hrand.android.timesupmobile.Fragments.SessionFragment
 import com.hrand.android.timesupmobile.R
 import com.hrand.android.timesupmobile.daos.WordDao
 import com.hrand.android.timesupmobile.models.Word
@@ -13,6 +15,8 @@ class GameActivity : AppCompatActivity() {
     var nbTeam = 2
     var currentSession = 1
     var currentTeam = 1
+    lateinit var gameTeamActionFragment: GameTeamActionFragment
+    lateinit var sessionFragment: SessionFragment
 
     lateinit var wordsList: List<Word>
 
@@ -28,6 +32,21 @@ class GameActivity : AppCompatActivity() {
 
         wordsList = initWords(8)
 
+        // Fragments initialization
+        gameTeamActionFragment = GameTeamActionFragment.newInstance()
+        sessionFragment = SessionFragment.newInstance()
+
+        displayGameTeamActionFragment()
+
+    }
+
+    fun displayGameTeamActionFragment(){
+        supportFragmentManager.beginTransaction().add(R.id.rl_fragment, gameTeamActionFragment, "gameTeamActionFragment").commit()
+    }
+
+    fun displaySessionFragment(){
+        supportFragmentManager.beginTransaction().remove(gameTeamActionFragment).commit()
+        supportFragmentManager.beginTransaction().add(R.id.rl_fragment, sessionFragment, "sessionFragment").commit()
     }
 
     private fun initWords(nbWord: Int) : List<Word> {

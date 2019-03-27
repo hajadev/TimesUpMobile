@@ -11,10 +11,15 @@
         android:scaleType="center"
         android:contentDescription="@string/background_image" />
 
-    <fragment
+<!--    <fragment
         android:id="@+id/fragment_game"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.hrand.android.timesupmobile.Fragments.GameTeamActionFragment"/>
+        android:name="com.hrand.android.timesupmobile.Fragments.GameTeamActionFragment"/>-->
+
+    <RelativeLayout
+        android:id="@+id/rl_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>
