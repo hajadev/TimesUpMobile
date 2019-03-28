@@ -24,9 +24,11 @@ class SessionFragment : Fragment() {
     var timeInMilliseconds = 0L
     var timeSwapBuff = 0L
     var updatedTime = 0L
+    var timerCanRun = false
+    lateinit var currentActivity: GameActivity
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val currentActivity = this.activity as GameActivity
+        currentActivity = this.activity as GameActivity
         //super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.fragment_session, container, false)
 
@@ -36,8 +38,10 @@ class SessionFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
+        startTimer2()
+
         btn_found.setOnClickListener {
-            startTimer(30)
+
         }
 
         btn_pass.setOnClickListener {
@@ -47,7 +51,14 @@ class SessionFragment : Fragment() {
 
     }
 
-    private fun startTimer(duration: Int){
+    private fun startTimer2(){
+        timerCanRun = true
+        startTime = SystemClock.uptimeMillis()
+        customHandler = Handler()
+        customHandler.postDelayed(updateTimerThread2, 0)
+    }
+
+    private fun startTimer(){
         startTime = SystemClock.uptimeMillis()
         customHandler = Handler()
         customHandler.postDelayed(updateTimerThread, 0)
@@ -68,9 +79,39 @@ class SessionFragment : Fragment() {
             tv_timer.text = ("" + mins + ":"
                     + String.format("%02d", secs) + ":"
                     + String.format("%03d", milliseconds))
-            customHandler.postDelayed(this, 0)
+
+            // The Fragment is Visible so the timer must go on
+            if(timerCanRun) {
+                customHandler.postDelayed(this, 0)
+            }
         }
 
+    }
+
+    private val updateTimerThread2 = object : Runnable {
+
+        override fun run() {
+
+            timeInMilliseconds = SystemClock.uptimeMillis() - startTime
+
+            updatedTime = timeSwapBuff + timeInMilliseconds
+
+            var secs = (updatedTime / 1000).toInt()
+            secs %= 60
+            val timeToDisplay = currentActivity.duration - secs
+            tv_timer.text = String.format("%02d", timeToDisplay)
+            if(timeToDisplay>0) {
+                customHandler.postDelayed(this, 0)
+            }
+            else{
+                currentActivity.closeSessionFragment()
+            }
+        }
+
+    }
+
+    fun stopTimer(){
+        timerCanRun = false
     }
 
     companion object {

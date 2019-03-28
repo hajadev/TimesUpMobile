@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:id="@+id/rl_center"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginBottom="50dp">
@@ -16,6 +17,7 @@
             android:layout_height="80dp"
             android:background="@drawable/paper"
             android:layout_marginBottom="30dp"
+            android:layout_centerHorizontal="true"
             >
             <TextView
                 android:id="@+id/tv_word_to_find"
@@ -31,14 +33,20 @@
 
         <TextView
             android:id="@+id/tv_timer"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:textColor="@color/colorGreen"
             android:textStyle="bold"
-            android:textSize="40sp"
+            android:textSize="80sp"
+            android:textColor="@color/colorPurple"
+            android:shadowColor="@color/colorWhite"
+            android:shadowDx="4"
+            android:shadowDy="4"
+            android:shadowRadius="2"
+            app:fontFamily="@font/njnaruto"
             android:text="00:00:00"
-            android:layout_below="@id/rl_word_to_display"/>
+            android:layout_below="@id/rl_word_to_display"
+            android:gravity="center"/>
 
     </RelativeLayout>
 

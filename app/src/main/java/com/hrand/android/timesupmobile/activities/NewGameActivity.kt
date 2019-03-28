@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.hrand.android.timesupmobile.R
+import com.hrand.android.timesupmobile.utils.gotoActivity
 import kotlinx.android.synthetic.main.activity_new_game.*
 
 class NewGameActivity : AppCompatActivity() {
@@ -123,11 +124,12 @@ class NewGameActivity : AppCompatActivity() {
         }
 
         btn_validate.setOnClickListener {
-            val intent = Intent(this, GameActivity::class.java)
+            /*val intent = Intent(this, GameActivity::class.java)
             intent.putExtra("difficulty", difficulty)
             intent.putExtra("duration", duration)
             intent.putExtra("nbTeam", nbTeam)
-            startActivity(intent)
+            startActivity(intent)*/
+            gotoActivity(GameActivity::class, extras = mapOf("difficulty" to difficulty, "duration" to duration, "nbTeam" to nbTeam))
         }
 
     }
