@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.SystemClock
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,6 +32,7 @@ class SessionFragment : Fragment() {
         currentActivity = this.activity as GameActivity
         //super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.fragment_session, container, false)
+        Log.d("haja", "SessionFragment.onCreateView()")
 
         return view
     }
@@ -38,7 +40,7 @@ class SessionFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        startTimer2()
+        startTimer()
 
         btn_found.setOnClickListener {
 
@@ -51,17 +53,11 @@ class SessionFragment : Fragment() {
 
     }
 
-    private fun startTimer2(){
+    private fun startTimer(){
         timerCanRun = true
         startTime = SystemClock.uptimeMillis()
         customHandler = Handler()
         customHandler.postDelayed(updateTimerThread2, 0)
-    }
-
-    private fun startTimer(){
-        startTime = SystemClock.uptimeMillis()
-        customHandler = Handler()
-        customHandler.postDelayed(updateTimerThread, 0)
     }
 
     private val updateTimerThread = object : Runnable {
@@ -80,7 +76,6 @@ class SessionFragment : Fragment() {
                     + String.format("%02d", secs) + ":"
                     + String.format("%03d", milliseconds))
 
-            // The Fragment is Visible so the timer must go on
             if(timerCanRun) {
                 customHandler.postDelayed(this, 0)
             }
@@ -100,7 +95,9 @@ class SessionFragment : Fragment() {
             secs %= 60
             val timeToDisplay = currentActivity.duration - secs
             tv_timer.text = String.format("%02d", timeToDisplay)
-            if(timeToDisplay>0) {
+
+            // The Fragment is Visible so the timer must go on
+            if((timeToDisplay>0)&&(timerCanRun)) {
                 customHandler.postDelayed(this, 0)
             }
             else{

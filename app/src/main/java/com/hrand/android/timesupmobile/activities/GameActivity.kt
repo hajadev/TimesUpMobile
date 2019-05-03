@@ -71,6 +71,7 @@ class GameActivity : AppCompatActivity() {
         super.onBackPressed()
         if(sessionFragmentIsVisible){
             sessionFragment.stopTimer()
+            closeSessionFragment()
         }
     }
 
