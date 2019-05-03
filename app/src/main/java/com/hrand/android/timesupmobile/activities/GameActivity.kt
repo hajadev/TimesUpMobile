@@ -87,5 +87,13 @@ class GameActivity : AppCompatActivity() {
         return listToReturn
     }
 
+    fun nextTeam(){
+        if(currentTeam==nbTeam){
+            currentTeam = 1
+        }
+        else{
+            currentTeam++
+        }
+    }
 
 }

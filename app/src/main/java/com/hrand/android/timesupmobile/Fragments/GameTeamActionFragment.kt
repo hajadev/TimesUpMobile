@@ -35,6 +35,8 @@ class GameTeamActionFragment : Fragment() {
             else -> currentActivity.findViewById<TextView>(R.id.tv_session_desc).text = getString(R.string.error)
         }
 
+        tv_team.text = "Team ${currentActivity.currentTeam}"
+
         btn_play.setOnClickListener {
             currentActivity.displaySessionFragment()
         }
