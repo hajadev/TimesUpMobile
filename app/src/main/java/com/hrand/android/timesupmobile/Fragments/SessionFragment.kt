@@ -14,8 +14,7 @@ import com.hrand.android.timesupmobile.R
 import com.hrand.android.timesupmobile.activities.GameActivity
 import kotlinx.android.synthetic.main.fragment_session.*
 import androidx.core.os.HandlerCompat.postDelayed
-
-
+import com.hrand.android.timesupmobile.models.Word
 
 
 class SessionFragment : Fragment() {
@@ -27,6 +26,7 @@ class SessionFragment : Fragment() {
     var updatedTime = 0L
     var timerCanRun = false
     lateinit var currentActivity: GameActivity
+    var currentIndex = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         currentActivity = this.activity as GameActivity
@@ -40,16 +40,24 @@ class SessionFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        startTimer()
+        tv_word_to_find.text = currentActivity.wordsList[currentIndex].value
 
         btn_found.setOnClickListener {
-
+            if(hasNextWord()){
+                currentIndex++
+                tv_word_to_find.text = currentActivity.wordsList[currentIndex].value
+            }
+            else{
+                timerCanRun = false
+            }
         }
 
         btn_pass.setOnClickListener {
             timeSwapBuff += timeInMilliseconds
             customHandler.removeCallbacks(updateTimerThread)
         }
+
+        startTimer()
 
     }
 
@@ -109,6 +117,17 @@ class SessionFragment : Fragment() {
 
     fun stopTimer(){
         timerCanRun = false
+    }
+
+    /**
+     * If there is a word next return true
+     * Else return false
+     */
+    fun hasNextWord(): Boolean{
+        if(currentIndex<(currentActivity.wordsList.size-1)){
+            return true
+        }
+        return false
     }
 
     companion object {
