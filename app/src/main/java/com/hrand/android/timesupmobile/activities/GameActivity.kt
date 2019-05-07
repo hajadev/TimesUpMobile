@@ -50,16 +50,21 @@ class GameActivity : AppCompatActivity() {
     }
 
     fun displayGameTeamActionFragment(){
+        if(sessionFragmentIsVisible){
+            supportFragmentManager.beginTransaction().remove(sessionFragment).commit()
+            sessionFragmentIsVisible = false
+        }
         supportFragmentManager.beginTransaction().add(R.id.rl_fragment, gameTeamActionFragment, "gameTeamActionFragment").commit()
-        sessionFragmentIsVisible = false
         gameTeamActionFragmentIsVisible = true
     }
 
     fun displaySessionFragment(){
-        supportFragmentManager.beginTransaction().remove(gameTeamActionFragment).commit()
+        if(gameTeamActionFragmentIsVisible) {
+            supportFragmentManager.beginTransaction().remove(gameTeamActionFragment).commit()
+            gameTeamActionFragmentIsVisible = false
+        }
         supportFragmentManager.beginTransaction().add(R.id.rl_fragment, sessionFragment, "sessionFragment").commit()
         sessionFragmentIsVisible = true
-        gameTeamActionFragmentIsVisible = false
     }
 
     fun closeSessionFragment(){
@@ -88,12 +93,27 @@ class GameActivity : AppCompatActivity() {
     }
 
     fun nextTeam(){
-        if(currentTeam==nbTeam){
+        if(currentTeam==nbTeam){ // we are the last team
             currentTeam = 1
         }
         else{
             currentTeam++
         }
+    }
+
+    fun nextSession(): Boolean{
+        if(currentSession<3){
+            currentSession++
+            displayGameTeamActionFragment()
+            return true
+        }
+        else{ // end of the game
+            return false
+        }
+    }
+
+    fun endGame(){
+        this.finish()
     }
 
 }

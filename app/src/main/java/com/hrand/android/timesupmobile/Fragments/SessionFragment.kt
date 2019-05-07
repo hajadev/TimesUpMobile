@@ -49,6 +49,9 @@ class SessionFragment : Fragment() {
             }
             else{
                 timerCanRun = false
+                currentActivity.nextTeam()
+                if(!currentActivity.nextSession()) // go to next session if we are not on the last session
+                    currentActivity.endGame()
             }
         }
 
@@ -109,7 +112,8 @@ class SessionFragment : Fragment() {
                 customHandler.postDelayed(this, 0)
             }
             else{
-                currentActivity.closeSessionFragment()
+                currentActivity.nextTeam()
+                currentActivity.displayGameTeamActionFragment()
             }
         }
 
@@ -123,7 +127,7 @@ class SessionFragment : Fragment() {
      * If there is a word next return true
      * Else return false
      */
-    fun hasNextWord(): Boolean{
+    private fun hasNextWord(): Boolean{
         if(currentIndex<(currentActivity.wordsList.size-1)){
             return true
         }
