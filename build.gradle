@@ -10,7 +10,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.2'
+        classpath 'com.android.tools.build:gradle:3.4.0'
         classpath "io.objectbox:objectbox-gradle-plugin:$objectboxVersion"
         classpath "io.objectbox:objectbox-kotlin:$objectboxVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinGradlePlugin_version"
