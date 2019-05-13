@@ -1,20 +1,15 @@
-package com.hrand.android.timesupmobile.Fragments
+package com.hrand.android.timesupmobile.fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.SystemClock
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.hrand.android.timesupmobile.R
 import com.hrand.android.timesupmobile.activities.GameActivity
 import kotlinx.android.synthetic.main.fragment_session.*
-import androidx.core.os.HandlerCompat.postDelayed
-import com.hrand.android.timesupmobile.models.Word
 
 
 class SessionFragment : Fragment() {

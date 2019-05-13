@@ -4,12 +4,11 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.hrand.android.timesupmobile.Fragments.GameTeamActionFragment
-import com.hrand.android.timesupmobile.Fragments.SessionFragment
+import com.hrand.android.timesupmobile.fragments.GameTeamActionFragment
+import com.hrand.android.timesupmobile.fragments.SessionFragment
 import com.hrand.android.timesupmobile.R
 import com.hrand.android.timesupmobile.daos.WordDao
 import com.hrand.android.timesupmobile.models.Word
-import com.hrand.android.timesupmobile.utils.getExtra
 
 class GameActivity : AppCompatActivity() {
 

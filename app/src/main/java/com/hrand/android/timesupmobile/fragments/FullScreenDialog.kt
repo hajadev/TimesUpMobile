@@ -1,4 +1,4 @@
-package com.hrand.android.timesupmobile.Fragments
+package com.hrand.android.timesupmobile.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,12 +10,10 @@ import android.widget.CheckBox
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.hrand.android.timesupmobile.R
-import com.hrand.android.timesupmobile.activities.WordsListActivity
 import com.hrand.android.timesupmobile.adapters.ThemeBaseAdapter
 import com.hrand.android.timesupmobile.daos.ThemeDao
 import com.hrand.android.timesupmobile.models.Theme
 import kotlinx.android.synthetic.main.layout_add_word_dialog_2.*
-import kotlinx.android.synthetic.main.theme_list_view_with_checkbox_item.*
 
 class FullScreenDialog : DialogFragment(), AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener {
 

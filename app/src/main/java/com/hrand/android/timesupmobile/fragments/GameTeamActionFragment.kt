@@ -1,4 +1,4 @@
-package com.hrand.android.timesupmobile.Fragments
+package com.hrand.android.timesupmobile.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
