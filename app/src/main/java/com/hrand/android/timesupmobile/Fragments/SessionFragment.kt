@@ -32,7 +32,6 @@ class SessionFragment : Fragment() {
         currentActivity = this.activity as GameActivity
         //super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.fragment_session, container, false)
-        Log.d("haja", "SessionFragment.onCreateView()")
 
         return view
     }
@@ -65,6 +64,12 @@ class SessionFragment : Fragment() {
     }
 
     private fun startTimer(){
+
+        startTime = 0L
+        timeInMilliseconds = 0L
+        timeSwapBuff = 0L
+        updatedTime = 0L
+
         timerCanRun = true
         startTime = SystemClock.uptimeMillis()
         customHandler = Handler()
