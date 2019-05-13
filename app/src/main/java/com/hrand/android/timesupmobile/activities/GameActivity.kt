@@ -2,6 +2,7 @@ package com.hrand.android.timesupmobile.activities
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.hrand.android.timesupmobile.Fragments.GameTeamActionFragment
 import com.hrand.android.timesupmobile.Fragments.SessionFragment
@@ -41,11 +42,16 @@ class GameActivity : AppCompatActivity() {
 
         wordsList = initWords(8)
 
-        // Fragments initialization
-        gameTeamActionFragment = GameTeamActionFragment.newInstance()
-        sessionFragment = SessionFragment.newInstance()
-
-        displayGameTeamActionFragment()
+        if(!wordsList.isEmpty()) {
+            // Fragments initialization
+            gameTeamActionFragment = GameTeamActionFragment.newInstance()
+            sessionFragment = SessionFragment.newInstance()
+            displayGameTeamActionFragment()
+        }
+        else{
+            Toast.makeText(this, "Base de mots non initialisé.", Toast.LENGTH_SHORT).show()
+            this.finish()
+        }
 
     }
 
@@ -84,9 +90,11 @@ class GameActivity : AppCompatActivity() {
         val listToReturn = ArrayList<Word>()
         val allWords  = WordDao.getAll()
 
-        allWords.shuffled()
-        for(i in 0..nbWord){
-            listToReturn.add(allWords[i])
+        if(!allWords.isEmpty()) {
+            allWords.shuffled()
+            for (i in 0..nbWord) {
+                listToReturn.add(allWords[i])
+            }
         }
 
         return listToReturn
