@@ -20,11 +20,11 @@ class SessionFragment : Fragment() {
     var timeSwapBuff = 0L
     var updatedTime = 0L
     var timerCanRun = false
-    lateinit var currentActivity: GameActivity
+    lateinit var gameActivity: GameActivity
     //var currentIndex = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        currentActivity = this.activity as GameActivity
+        gameActivity = this.activity as GameActivity
         //super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.fragment_session, container, false)
 
@@ -34,7 +34,7 @@ class SessionFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        tv_word_to_find.text = currentActivity.wordsList[currentActivity.currentIndexWord].value
+        tv_word_to_find.text = gameActivity.wordsList[gameActivity.currentIndexWord].value
 
         setListener()
 
@@ -44,15 +44,16 @@ class SessionFragment : Fragment() {
 
     private fun setListener(){
         btn_found.setOnClickListener {
+            gameActivity.wordFound()
             if(hasNextWord()){
-                currentActivity.currentIndexWord++
-                tv_word_to_find.text = currentActivity.wordsList[currentActivity.currentIndexWord].value
+                gameActivity.currentIndexWord++
+                tv_word_to_find.text = gameActivity.wordsList[gameActivity.currentIndexWord].value
             }
             else{
                 timerCanRun = false
-                currentActivity.nextTeam()
-                if(!currentActivity.nextSession()) // go to next session if we are not on the last session
-                    currentActivity.endGame()
+                gameActivity.nextTeam()
+                if(!gameActivity.nextSession()) // go to next session if we are not on the last session
+                    gameActivity.endGame()
             }
         }
 
@@ -108,7 +109,7 @@ class SessionFragment : Fragment() {
 
             var secs = (updatedTime / 1000).toInt()
             secs %= 60
-            val timeToDisplay = currentActivity.duration - secs
+            val timeToDisplay = gameActivity.duration - secs
             tv_timer.text = String.format("%02d", timeToDisplay)
 
             // The Fragment is Visible so the timer must go on
@@ -116,8 +117,8 @@ class SessionFragment : Fragment() {
                 customHandler.postDelayed(this, 0)
             }
             else{
-                currentActivity.nextTeam()
-                currentActivity.displayGameTeamActionFragment()
+                gameActivity.nextTeam()
+                gameActivity.displayGameTeamActionFragment()
             }
         }
 
@@ -132,7 +133,7 @@ class SessionFragment : Fragment() {
      * Else return false
      */
     private fun hasNextWord(): Boolean{
-        if(currentActivity.currentIndexWord<(currentActivity.wordsList.size-1)){
+        if(gameActivity.currentIndexWord<(gameActivity.wordsList.size-1)){
             return true
         }
         return false

@@ -23,6 +23,11 @@ class GameActivity : AppCompatActivity() {
     lateinit var gameTeamActionFragment: GameTeamActionFragment
     lateinit var sessionFragment: SessionFragment
 
+    var t1Points = 0
+    var t2Points = 0
+    var t3Points = 0
+    var t4Points = 0
+
     lateinit var wordsList: List<Word>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -123,7 +128,38 @@ class GameActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Increment the point of the team who found the word
+     */
+    fun wordFound(){
+        when(currentTeam){
+            1 -> t1Points++
+            2 -> t2Points++
+            3 -> t3Points++
+            4 -> t4Points++
+            else -> {
+                Log.e("haja", "Problème de comptage de points...")
+            }
+        }
+    }
+
+    /**
+     * Display the winner
+     * ToDo: Equality case
+     */
+    fun displayWinner(){
+        var winner = 1
+        if(t1Points<t2Points)
+            winner = 2
+        if(t2Points<t3Points)
+            winner = 3
+        if(t3Points<t4Points)
+            winner = 4
+        Toast.makeText(this, "La team $winner a gagné la partie !!! Bravo !", Toast.LENGTH_SHORT).show()
+    }
+
     fun endGame(){
+        displayWinner()
         this.finish()
     }
 
