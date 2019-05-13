@@ -19,6 +19,7 @@ class GameActivity : AppCompatActivity() {
     var currentTeam = 1
     var gameTeamActionFragmentIsVisible = false
     var sessionFragmentIsVisible = false
+    var currentIndexWord = 0
     lateinit var gameTeamActionFragment: GameTeamActionFragment
     lateinit var sessionFragment: SessionFragment
 
@@ -59,8 +60,10 @@ class GameActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction().remove(sessionFragment).commit()
             sessionFragmentIsVisible = false
         }
-        supportFragmentManager.beginTransaction().add(R.id.rl_fragment, gameTeamActionFragment, "gameTeamActionFragment").commit()
-        gameTeamActionFragmentIsVisible = true
+        if(!gameTeamActionFragmentIsVisible) {
+            supportFragmentManager.beginTransaction().add(R.id.rl_fragment, gameTeamActionFragment, "gameTeamActionFragment").commit()
+            gameTeamActionFragmentIsVisible = true
+        }
     }
 
     fun displaySessionFragment(){
@@ -111,6 +114,7 @@ class GameActivity : AppCompatActivity() {
     fun nextSession(): Boolean{
         if(currentSession<3){
             currentSession++
+            currentIndexWord = 0
             displayGameTeamActionFragment()
             return true
         }

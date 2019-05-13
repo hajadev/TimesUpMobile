@@ -21,7 +21,7 @@ class SessionFragment : Fragment() {
     var updatedTime = 0L
     var timerCanRun = false
     lateinit var currentActivity: GameActivity
-    var currentIndex = 0
+    //var currentIndex = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         currentActivity = this.activity as GameActivity
@@ -34,12 +34,19 @@ class SessionFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        tv_word_to_find.text = currentActivity.wordsList[currentIndex].value
+        tv_word_to_find.text = currentActivity.wordsList[currentActivity.currentIndexWord].value
 
+        setListener()
+
+        startTimer()
+
+    }
+
+    private fun setListener(){
         btn_found.setOnClickListener {
             if(hasNextWord()){
-                currentIndex++
-                tv_word_to_find.text = currentActivity.wordsList[currentIndex].value
+                currentActivity.currentIndexWord++
+                tv_word_to_find.text = currentActivity.wordsList[currentActivity.currentIndexWord].value
             }
             else{
                 timerCanRun = false
@@ -53,9 +60,6 @@ class SessionFragment : Fragment() {
             timeSwapBuff += timeInMilliseconds
             customHandler.removeCallbacks(updateTimerThread)
         }
-
-        startTimer()
-
     }
 
     private fun startTimer(){
@@ -128,7 +132,7 @@ class SessionFragment : Fragment() {
      * Else return false
      */
     private fun hasNextWord(): Boolean{
-        if(currentIndex<(currentActivity.wordsList.size-1)){
+        if(currentActivity.currentIndexWord<(currentActivity.wordsList.size-1)){
             return true
         }
         return false
