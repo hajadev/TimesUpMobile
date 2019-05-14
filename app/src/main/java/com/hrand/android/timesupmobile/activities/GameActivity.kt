@@ -8,6 +8,7 @@ import com.hrand.android.timesupmobile.fragments.GameTeamActionFragment
 import com.hrand.android.timesupmobile.fragments.SessionFragment
 import com.hrand.android.timesupmobile.R
 import com.hrand.android.timesupmobile.daos.WordDao
+import com.hrand.android.timesupmobile.fragments.StatFragment
 import com.hrand.android.timesupmobile.models.Word
 
 class GameActivity : AppCompatActivity() {
@@ -19,9 +20,12 @@ class GameActivity : AppCompatActivity() {
     var currentTeam = 1
     var gameTeamActionFragmentIsVisible = false
     var sessionFragmentIsVisible = false
+    var statFragmentIsVisible = false
     var currentIndexWord = 0
+    var gameStarted = false
     lateinit var gameTeamActionFragment: GameTeamActionFragment
     lateinit var sessionFragment: SessionFragment
+    lateinit var statFragment: StatFragment
 
     var t1Points = 0
     var t2Points = 0
@@ -51,7 +55,9 @@ class GameActivity : AppCompatActivity() {
             // Fragments initialization
             gameTeamActionFragment = GameTeamActionFragment.newInstance()
             sessionFragment = SessionFragment.newInstance()
+            statFragment = StatFragment.newInstance()
             displayGameTeamActionFragment()
+            gameStarted = true
         }
         else{
             Toast.makeText(this, "Base de mots non initialisé.", Toast.LENGTH_SHORT).show()
@@ -62,8 +68,10 @@ class GameActivity : AppCompatActivity() {
 
     fun displayGameTeamActionFragment(){
         if(sessionFragmentIsVisible){
-            supportFragmentManager.beginTransaction().remove(sessionFragment).commit()
-            sessionFragmentIsVisible = false
+            closeSessionFragment()
+        }
+        if(statFragmentIsVisible){
+            closeStatFragment()
         }
         if(!gameTeamActionFragmentIsVisible) {
             supportFragmentManager.beginTransaction().add(R.id.rl_fragment, gameTeamActionFragment, "gameTeamActionFragment").commit()
@@ -73,24 +81,54 @@ class GameActivity : AppCompatActivity() {
 
     fun displaySessionFragment(){
         if(gameTeamActionFragmentIsVisible) {
-            supportFragmentManager.beginTransaction().remove(gameTeamActionFragment).commit()
-            gameTeamActionFragmentIsVisible = false
+            closeGameTeamActionFragment()
         }
-        supportFragmentManager.beginTransaction().add(R.id.rl_fragment, sessionFragment, "sessionFragment").commit()
-        sessionFragmentIsVisible = true
+        if(statFragmentIsVisible){
+            closeStatFragment()
+        }
+        if(!sessionFragmentIsVisible) {
+            supportFragmentManager.beginTransaction().add(R.id.rl_fragment, sessionFragment, "sessionFragment").commit()
+            sessionFragmentIsVisible = true
+        }
     }
 
-    fun closeSessionFragment(){
+    fun displayStatFragment(){
+        if(sessionFragmentIsVisible){
+            closeSessionFragment()
+            Log.d("haja", "closeSessionFragment")
+        }
+        if(gameTeamActionFragmentIsVisible) {
+            closeGameTeamActionFragment()
+            Log.d("haja", "closeGameTeamActionFragment")
+        }
+        supportFragmentManager.beginTransaction().add(R.id.rl_fragment, statFragment, "statFragment").commit()
+        statFragmentIsVisible = true
+    }
+
+    private fun closeGameTeamActionFragment(){
+        supportFragmentManager.beginTransaction().remove(gameTeamActionFragment).commit()
+        gameTeamActionFragmentIsVisible = false
+    }
+
+    private fun closeSessionFragment(){
         supportFragmentManager.beginTransaction().remove(sessionFragment).commit()
         sessionFragmentIsVisible = false
     }
 
+    private fun closeStatFragment(){
+        supportFragmentManager.beginTransaction().remove(statFragment).commit()
+        statFragmentIsVisible = false
+    }
+
     override fun onBackPressed() {
-        super.onBackPressed()
         if(sessionFragmentIsVisible){
             sessionFragment.stopTimer()
             closeSessionFragment()
         }
+        if(statFragmentIsVisible){
+            closeStatFragment()
+        }
+        super.onBackPressed()
     }
 
     private fun initWords(nbWord: Int) : List<Word> {
@@ -160,11 +198,13 @@ class GameActivity : AppCompatActivity() {
         if(t3Points<t4Points)
             winner = 4
         Toast.makeText(this, "La team $winner a gagné la partie !!! Bravo !", Toast.LENGTH_SHORT).show()
+        displayStatFragment()
     }
 
     fun endGame(){
+        Log.d("haja", "end of the game")
+        gameStarted = false
         displayWinner()
-        this.finish()
     }
 
 }

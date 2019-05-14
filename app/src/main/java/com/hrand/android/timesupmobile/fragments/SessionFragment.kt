@@ -121,7 +121,9 @@ class SessionFragment : Fragment() {
                 if(timerCanRun) { // verification because if not, nextTeam is called twice
                     gameActivity.nextTeam()
                 }
-                gameActivity.displayGameTeamActionFragment()
+                if(gameActivity.gameStarted) {
+                    gameActivity.displayGameTeamActionFragment()
+                }
             }
         }
 
