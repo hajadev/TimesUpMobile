@@ -98,9 +98,10 @@ class GameActivity : AppCompatActivity() {
         val allWords  = WordDao.getAll()
 
         if(!allWords.isEmpty()) {
-            allWords.shuffled()
+            val wordsShuffled = allWords.shuffled()
+            Log.d("haja", "Mélange des mots")
             for (i in 0..nbWord) {
-                listToReturn.add(allWords[i])
+                listToReturn.add(wordsShuffled[i])
             }
         }
 
@@ -109,9 +110,11 @@ class GameActivity : AppCompatActivity() {
 
     fun nextTeam(){
         if(currentTeam==nbTeam){ // we are the last team
+            Log.d("haja", "Reinitialisation team à 1")
             currentTeam = 1
         }
         else{
+            Log.d("haja", "Incrémentation team")
             currentTeam++
         }
     }
@@ -121,6 +124,7 @@ class GameActivity : AppCompatActivity() {
             currentSession++
             currentIndexWord = 0
             displayGameTeamActionFragment()
+            wordsList = wordsList.shuffled()
             return true
         }
         else{ // end of the game
