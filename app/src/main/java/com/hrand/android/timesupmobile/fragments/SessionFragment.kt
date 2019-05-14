@@ -3,6 +3,7 @@ package com.hrand.android.timesupmobile.fragments
 import android.os.Bundle
 import android.os.Handler
 import android.os.SystemClock
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -117,7 +118,9 @@ class SessionFragment : Fragment() {
                 customHandler.postDelayed(this, 0)
             }
             else{
-                gameActivity.nextTeam()
+                if(timerCanRun) { // verification because if not, nextTeam is called twice
+                    gameActivity.nextTeam()
+                }
                 gameActivity.displayGameTeamActionFragment()
             }
         }
