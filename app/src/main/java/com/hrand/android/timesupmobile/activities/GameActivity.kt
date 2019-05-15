@@ -32,6 +32,8 @@ class GameActivity : AppCompatActivity() {
     var t3Points = 0
     var t4Points = 0
 
+    var winner = 0
+
     lateinit var wordsList: List<Word>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -190,7 +192,7 @@ class GameActivity : AppCompatActivity() {
      * ToDo: Equality case
      */
     fun displayWinner(){
-        var winner = 1
+        winner = 1
         if(t1Points<t2Points)
             winner = 2
         if(t2Points<t3Points)

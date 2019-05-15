@@ -4,17 +4,73 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
+        android:id="@+id/rl_sky"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/star_1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/star_gold"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_below="@+id/star_2"/>
+
+        <ImageView
+            android:id="@+id/star_2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/star_gold"
+            android:layout_centerHorizontal="true"/>
+
+        <ImageView
+            android:id="@+id/star_3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/star_gold"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_below="@+id/star_2"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/rl_stat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/rl_sky"
         android:layout_above="@+id/btn_exit">
 
-        <ImageView
-            android:id="@+id/iv_trophy"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:src="@drawable/winner"
-            android:layout_centerInParent="true"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true">
+
+            <ImageView
+                android:id="@+id/iv_trophy"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/winner"
+                android:layout_centerInParent="true"/>
+
+            <TextView
+                android:id="@+id/tv_winner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:gravity="center_horizontal"
+                android:textStyle="bold|italic"
+                android:textColor="@color/colorWhite"
+                android:layout_below="@+id/iv_trophy"
+                android:layout_marginTop="20dp"/>
+
+        </RelativeLayout>
+
 
     </RelativeLayout>
 
