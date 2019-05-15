@@ -25,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:textColor="@color/colorPurple"
+                app:fontFamily="@font/bubblegum"
                 android:textStyle="bold"
                 android:textSize="30sp"
                 android:text="@string/word"
@@ -43,7 +44,7 @@
             android:shadowDx="4"
             android:shadowDy="4"
             android:shadowRadius="2"
-            app:fontFamily="@font/njnaruto"
+            app:fontFamily="@font/bubblegum"
             android:text="00:00:00"
             android:layout_below="@id/rl_word_to_display"
             android:gravity="center"/>

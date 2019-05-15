@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center">
 
     <TextView
@@ -12,6 +13,7 @@
         android:textSize="50sp"
         android:textStyle="bold"
         android:textColor="@color/colorPurple"
+        app:fontFamily="@font/bubblegum"
         android:layout_marginBottom="20dp"/>
 
     <TextView
@@ -37,6 +39,7 @@
             android:layout_centerHorizontal="true"
             android:textSize="50sp"
             android:textStyle="bold"
+            app:fontFamily="@font/bubblegum"
             android:textColor="@color/colorPurple"/>
 
         <ImageView

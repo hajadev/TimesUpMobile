@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <nl.dionsegijn.konfetti.KonfettiView
         android:id="@+id/viewKonfetti"
@@ -69,8 +70,12 @@
                 android:layout_height="wrap_content"
                 android:textSize="30sp"
                 android:gravity="center_horizontal"
-                android:textStyle="bold|italic"
-                android:textColor="@color/colorWhite"
+                android:textColor="@color/colorPurple"
+                android:shadowColor="@color/colorWhite"
+                android:shadowDx="4"
+                android:shadowDy="4"
+                android:shadowRadius="2"
+                app:fontFamily="@font/bubblegum"
                 android:layout_below="@+id/iv_trophy"
                 android:layout_marginTop="20dp"/>
 
