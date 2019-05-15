@@ -1,5 +1,6 @@
 package com.hrand.android.timesupmobile.fragments
 
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -12,6 +13,8 @@ import kotlinx.android.synthetic.main.fragment_stat.*
 import android.view.animation.AnimationUtils.loadAnimation
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import nl.dionsegijn.konfetti.models.Shape
+import nl.dionsegijn.konfetti.models.Size
 
 
 class StatFragment : Fragment() {
@@ -35,6 +38,16 @@ class StatFragment : Fragment() {
         super.onStart()
         tv_winner.text = "L'équipe ${gameActivity.winner} a gagné !!!"
         setListener()
+        viewKonfetti.build()
+                .addColors(Color.YELLOW, Color.LTGRAY/*, Color.GREEN, Color.MAGENTA*/)
+                .setDirection(0.0, 359.0)
+                .setSpeed(1f, 5f)
+                .setFadeOutEnabled(true)
+                .setTimeToLive(2000L)
+                .addShapes(Shape.RECT, Shape.CIRCLE)
+                .addSizes(Size(12))
+                .setPosition(-50f, viewKonfetti.width + 50f, -50f, -50f)
+                .streamFor(100, 5000L)
         animate()
         /*
         animate1()
