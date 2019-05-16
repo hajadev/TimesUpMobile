@@ -111,10 +111,10 @@ class SessionFragment : Fragment() {
             var secs = (updatedTime / 1000).toInt()
             secs %= 60
             val timeToDisplay = gameActivity.duration - secs
-            tv_timer.text = String.format("%02d", timeToDisplay)
 
             // The Fragment is Visible so the timer must go on
             if((timeToDisplay>0)&&(timerCanRun)) {
+                tv_timer.text = String.format("%02d", timeToDisplay)
                 customHandler.postDelayed(this, 0)
             }
             else{
