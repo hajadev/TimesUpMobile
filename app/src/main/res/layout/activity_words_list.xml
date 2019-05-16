@@ -4,14 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/app_background"
     tools:context=".activities.WordsListActivity">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/bg_blue"
-        android:scaleType="center"
-        android:contentDescription="@string/background_image" />
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite">
+    android:background="@drawable/app_background">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/abl"
