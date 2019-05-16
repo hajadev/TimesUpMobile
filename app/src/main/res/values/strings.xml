@@ -27,4 +27,5 @@
     <string name="word_to_word">Mot pour mot</string>
     <string name="mimic_the_word">Mimez le mot</string>
     <string name="error">Erreur</string>
+    <string name="end_game">Fin de partie</string>
 </resources>

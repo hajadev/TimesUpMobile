@@ -10,80 +10,47 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <RelativeLayout
-        android:id="@+id/rl_sky"
+    <TextView
+        android:id="@+id/tv_stat_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:text="@string/end_game"
+        android:textSize="50sp"
+        android:gravity="center"
+        android:textColor="@color/colorPurple"
+        app:fontFamily="@font/bubblegum"
+        android:textStyle="bold"
+        android:shadowColor="@color/colorWhite"
+        android:shadowDx="4"
+        android:shadowDy="4"
+        android:shadowRadius="1"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        />
 
-        <ImageView
-            android:id="@+id/star_1"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/star_gold"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_below="@+id/star_2"/>
+    <ImageView
+        android:id="@+id/iv_trophy"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/winner"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tv_stat_title"
+        android:layout_marginTop="40dp"/>
 
-        <ImageView
-            android:id="@+id/star_2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/star_gold"
-            android:layout_centerHorizontal="true"/>
-
-        <ImageView
-            android:id="@+id/star_3"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/star_gold"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_below="@+id/star_2"/>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/rl_stat"
+    <TextView
+        android:id="@+id/tv_winner"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/rl_sky"
-        android:layout_above="@+id/btn_exit">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true">
-
-            <ImageView
-                android:id="@+id/iv_trophy"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:src="@drawable/winner"
-                android:layout_centerInParent="true"/>
-
-            <TextView
-                android:id="@+id/tv_winner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:gravity="center_horizontal"
-                android:textColor="@color/colorPurple"
-                android:shadowColor="@color/colorWhite"
-                android:shadowDx="4"
-                android:shadowDy="4"
-                android:shadowRadius="2"
-                app:fontFamily="@font/bubblegum"
-                android:layout_below="@+id/iv_trophy"
-                android:layout_marginTop="20dp"/>
-
-        </RelativeLayout>
-
-
-    </RelativeLayout>
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/colorPurple"
+        android:shadowColor="@color/colorWhite"
+        android:shadowDx="4"
+        android:shadowDy="4"
+        android:shadowRadius="2"
+        app:fontFamily="@font/bubblegum"
+        android:layout_below="@+id/iv_trophy"
+        android:layout_marginTop="20dp"/>
 
     <Button
         android:id="@+id/btn_exit"
@@ -91,6 +58,7 @@
         android:layout_height="wrap_content"
         android:text="@string/exit"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"/>
 
 </RelativeLayout>

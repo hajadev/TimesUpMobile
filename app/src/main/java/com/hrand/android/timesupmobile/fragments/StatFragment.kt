@@ -1,5 +1,7 @@
 package com.hrand.android.timesupmobile.fragments
 
+import android.animation.AnimatorInflater
+import android.animation.ObjectAnimator
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
@@ -36,11 +38,17 @@ class StatFragment : Fragment() {
         }
     }
 
+    private fun animate(){
+        val anim = AnimatorInflater.loadAnimator(gameActivity, R.animator.flipping)
+        anim.setTarget(iv_trophy)
+        anim.duration = 3000
+        anim.start()
+    }
+
     override fun onStart() {
         super.onStart()
         tv_winner.text = "L'équipe ${gameActivity.winner} a gagné !!!"
         setListener()
-        animate()
         viewKonfetti.build()
                 .addColors(Color.YELLOW, Color.LTGRAY/*, Color.GREEN, Color.MAGENTA*/)
                 .setDirection(0.0, 359.0)
@@ -49,19 +57,9 @@ class StatFragment : Fragment() {
                 .setTimeToLive(2000L)
                 .addShapes(Shape.RECT, Shape.CIRCLE)
                 .addSizes(Size(12))
-                .setPosition(0f, rl_stat_fragment.width + 50f, -50f, -50f)
+                .setPosition(0f, rl_stat_fragment.width + 5000f, -50f, -50f)
                 .streamFor(100, 5000L)
-    }
-
-    private fun animate(){
-        val animation1 = AnimationUtils.loadAnimation(gameActivity, R.anim.my_animation)
-        val animation2 = AnimationUtils.loadAnimation(gameActivity, R.anim.my_animation)
-        val animation3 = AnimationUtils.loadAnimation(gameActivity, R.anim.my_animation)
-        star_1.startAnimation(animation1)
-        animation2.startOffset=500
-        star_2.startAnimation(animation2)
-        animation3.startOffset=1000
-        star_3.startAnimation(animation3)
+        animate()
     }
 
     companion object {
