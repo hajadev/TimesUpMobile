@@ -13,66 +13,67 @@
         android:layout_height="200dp"
         android:src="@drawable/logo_timesup"
         android:scaleType="fitXY"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"/>
 
     <LinearLayout
         android:id="@+id/llMenuBtn"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_below="@+id/main_title"
         android:layout_above="@+id/dev_contact"
+        android:layout_centerHorizontal="true"
         >
 
-        <Button
+        <TextView
             android:id="@+id/btn_new_game"
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/new_game"
-            android:layout_gravity="center_horizontal"
+            android:textSize="30sp"
+            app:fontFamily="@font/fff_tusj"
+            android:textColor="@color/text_main_menu_color"
             />
 
-<!--
-        <Button
-            android:id="@+id/btn_add_words"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text="@string/add_words"
-            android:layout_gravity="center_horizontal"
-            />
--->
-
-        <Button
+        <TextView
             android:id="@+id/btn_option"
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/option"
-            android:layout_gravity="center_horizontal"
+            android:textSize="30sp"
+            app:fontFamily="@font/fff_tusj"
+            android:textColor="@color/text_main_menu_color"
             />
 
-        <Button
+        <TextView
             android:id="@+id/btn_words_list"
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/list_words"
-            android:layout_gravity="center_horizontal"
+            android:textSize="30sp"
+            app:fontFamily="@font/fff_tusj"
+            android:textColor="@color/text_main_menu_color"
             />
 
-        <Button
+        <TextView
             android:id="@+id/btn_rules"
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/rules"
-            android:layout_gravity="center_horizontal"
+            android:textSize="30sp"
+            app:fontFamily="@font/fff_tusj"
+            android:textColor="@color/text_main_menu_color"
             />
 
-        <Button
+        <TextView
             android:id="@+id/btn_exit"
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/exit"
-            android:layout_gravity="center_horizontal"
+            android:textSize="30sp"
+            app:fontFamily="@font/fff_tusj"
+            android:textColor="@color/text_main_menu_color"
             />
 
     </LinearLayout>

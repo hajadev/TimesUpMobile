@@ -82,21 +82,21 @@ class NewGameActivity : AppCompatActivity() {
 
         tv30.setOnClickListener {
             tv30.setTextColor(ContextCompat.getColor(this, R.color.colorGreen))
-            tv40.setTextColor(ContextCompat.getColor(this, R.color.colorYellow))
-            tv50.setTextColor(ContextCompat.getColor(this, R.color.colorYellow))
+            tv40.setTextColor(ContextCompat.getColor(this, R.color.colorPurple))
+            tv50.setTextColor(ContextCompat.getColor(this, R.color.colorPurple))
 
             duration = 30
         }
         tv40.setOnClickListener {
-            tv30.setTextColor(ContextCompat.getColor(this, R.color.colorYellow))
+            tv30.setTextColor(ContextCompat.getColor(this, R.color.colorPurple))
             tv40.setTextColor(ContextCompat.getColor(this, R.color.colorGreen))
-            tv50.setTextColor(ContextCompat.getColor(this, R.color.colorYellow))
+            tv50.setTextColor(ContextCompat.getColor(this, R.color.colorPurple))
 
             duration = 40
         }
         tv50.setOnClickListener {
-            tv30.setTextColor(ContextCompat.getColor(this, R.color.colorYellow))
-            tv40.setTextColor(ContextCompat.getColor(this, R.color.colorYellow))
+            tv30.setTextColor(ContextCompat.getColor(this, R.color.colorPurple))
+            tv40.setTextColor(ContextCompat.getColor(this, R.color.colorPurple))
             tv50.setTextColor(ContextCompat.getColor(this, R.color.colorGreen))
 
             duration = 50

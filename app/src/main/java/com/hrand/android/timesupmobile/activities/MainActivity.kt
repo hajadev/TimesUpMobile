@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initBtnListener(){
+        btn_new_game.isClickable = true
         btn_new_game.setOnClickListener {
             val intent = NewGameActivity.newIntent(this)
             startActivity(intent)
