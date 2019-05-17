@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center">
+
+    <TextView
+        android:id="@+id/tv_session_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="100sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPurple"
+        app:fontFamily="@font/bubblegum"
+        android:shadowColor="@color/colorWhite"
+        android:shadowDx="4"
+        android:shadowDy="4"
+        android:shadowRadius="1"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_session_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="80sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorWhite"
+        android:layout_below="@+id/tv_session_number"
+        android:layout_marginTop="100dp"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/tv_team"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textSize="80sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/bubblegum"
+            android:textColor="@color/colorPurple"/>
+
+        <ImageView
+            android:id="@+id/iv_team"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/p_2_players"
+            android:scaleType="fitXY"
+            android:layout_marginBottom="50dp"
+            android:layout_below="@+id/tv_team"/>
+
+        <Button
+            android:id="@+id/btn_play"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="@string/play"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/iv_team"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>

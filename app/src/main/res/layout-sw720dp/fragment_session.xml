@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/rl_center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="50dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_word_to_display"
+            android:layout_width="500dp"
+            android:layout_height="160dp"
+            android:background="@drawable/paper"
+            android:layout_marginBottom="60dp"
+            android:layout_centerHorizontal="true"
+            >
+            <TextView
+                android:id="@+id/tv_word_to_find"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/colorPurple"
+                app:fontFamily="@font/bubblegum"
+                android:textStyle="bold"
+                android:textSize="60sp"
+                android:text="@string/word"
+                android:layout_centerInParent="true" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_timer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="160sp"
+            android:textColor="@color/colorPurple"
+            android:shadowColor="@color/colorWhite"
+            android:shadowDx="4"
+            android:shadowDy="4"
+            android:shadowRadius="2"
+            app:fontFamily="@font/bubblegum"
+            android:text="00:00:00"
+            android:layout_below="@id/rl_word_to_display"
+            android:gravity="center"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/rl_center">
+
+        <ImageButton
+            android:id="@+id/btn_pass"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/cancel2"
+            android:background="@drawable/cancel_custom_button"
+            android:scaleType="fitXY"
+            android:gradientRadius="90"
+            android:angle="90"
+            android:layout_marginRight="50dp"
+            android:layout_marginEnd="50dp" />
+
+        <ImageButton
+            android:id="@+id/btn_found"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/validate2"
+            android:background="@drawable/validate_custom_button"
+            android:scaleType="fitXY"
+            android:gradientRadius="90"
+            android:angle="90"
+            android:layout_toRightOf="@id/btn_pass"
+            android:layout_toEndOf="@id/btn_pass" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

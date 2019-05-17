@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_stat_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <nl.dionsegijn.konfetti.KonfettiView
+        android:id="@+id/viewKonfetti"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/tv_stat_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/end_game"
+        android:textSize="100sp"
+        android:gravity="center"
+        android:textColor="@color/colorPurple"
+        app:fontFamily="@font/bubblegum"
+        android:textStyle="bold"
+        android:shadowColor="@color/colorWhite"
+        android:shadowDx="4"
+        android:shadowDy="4"
+        android:shadowRadius="1"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/iv_trophy"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@drawable/winner"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/tv_winner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="80sp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/colorPurple"
+            android:shadowColor="@color/colorWhite"
+            android:shadowDx="4"
+            android:shadowDy="4"
+            android:shadowRadius="2"
+            app:fontFamily="@font/bubblegum"
+            android:layout_below="@+id/iv_trophy"
+            android:layout_marginTop="40dp"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/exit"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"/>
+
+</RelativeLayout>
