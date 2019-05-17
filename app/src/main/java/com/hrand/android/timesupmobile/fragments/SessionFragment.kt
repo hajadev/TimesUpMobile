@@ -119,6 +119,7 @@ class SessionFragment : Fragment() {
             }
             else{
                 if(timerCanRun) { // verification because if not, nextTeam is called twice
+                    gameActivity.playBuzzer()
                     gameActivity.nextTeam()
                 }
                 if(gameActivity.gameStarted) {

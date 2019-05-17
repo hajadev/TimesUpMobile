@@ -1,5 +1,6 @@
 package com.hrand.android.timesupmobile.activities
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -207,6 +208,11 @@ class GameActivity : AppCompatActivity() {
         Log.d("haja", "end of the game")
         gameStarted = false
         displayWinner()
+    }
+
+    fun playBuzzer(){
+        val mediaPlayer: MediaPlayer? = MediaPlayer.create(this, R.raw.buzzer)
+        mediaPlayer?.start() // no need to call prepare(); create() does that for you
     }
 
 }
