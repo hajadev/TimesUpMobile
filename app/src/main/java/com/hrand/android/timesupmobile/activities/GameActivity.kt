@@ -199,7 +199,7 @@ class GameActivity : AppCompatActivity() {
             winner = 3
         if(t3Points<t4Points)
             winner = 4
-        Toast.makeText(this, "La team $winner a gagné la partie !!! Bravo !", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, "La team $winner a gagné la partie !!! Bravo !", Toast.LENGTH_SHORT).show()
         displayStatFragment()
     }
 
