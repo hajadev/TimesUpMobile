@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/app_background"
+    tools:context="com.hrand.android.timesupmobile.activities.MainActivity">
+
+    <ImageView
+        android:id="@+id/main_title"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/logo_timesup"
+        android:scaleType="fitXY"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
+    <LinearLayout
+        android:id="@+id/llMenuBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/main_title"
+        android:layout_above="@+id/dev_contact"
+        android:layout_centerHorizontal="true"
+        >
+
+        <TextView
+            android:id="@+id/btn_new_game"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/new_game"
+            android:textSize="60sp"
+            app:fontFamily="@font/fff_tusj"
+            android:textColor="@color/text_main_menu_color"
+            />
+
+        <TextView
+            android:id="@+id/btn_option"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/option"
+            android:textSize="60sp"
+            app:fontFamily="@font/fff_tusj"
+            android:textColor="@color/text_main_menu_color"
+            />
+
+        <TextView
+            android:id="@+id/btn_words_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/list_words"
+            android:textSize="60sp"
+            app:fontFamily="@font/fff_tusj"
+            android:textColor="@color/text_main_menu_color"
+            />
+
+        <TextView
+            android:id="@+id/btn_rules"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rules"
+            android:textSize="60sp"
+            app:fontFamily="@font/fff_tusj"
+            android:textColor="@color/text_main_menu_color"
+            />
+
+        <TextView
+            android:id="@+id/btn_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/exit"
+            android:textSize="60sp"
+            app:fontFamily="@font/fff_tusj"
+            android:textColor="@color/text_main_menu_color"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/dev_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/contact_mail"
+        android:textColor="@color/colorAccent"
+        android:textAlignment="textEnd"
+        android:gravity="end"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>
