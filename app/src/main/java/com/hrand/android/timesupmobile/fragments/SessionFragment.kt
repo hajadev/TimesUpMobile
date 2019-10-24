@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.hrand.android.timesupmobile.R
 import com.hrand.android.timesupmobile.activities.GameActivity
+import com.hrand.android.timesupmobile.models.GameParameter
 import kotlinx.android.synthetic.main.fragment_session.*
 
 
@@ -35,7 +36,7 @@ class SessionFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        tv_word_to_find.text = gameActivity.wordsList[gameActivity.currentIndexWord].value
+        tv_word_to_find.text = gameActivity.wordsList[GameParameter.currentIndexWord].value
 
         setListener()
 
@@ -47,8 +48,8 @@ class SessionFragment : Fragment() {
         btn_found.setOnClickListener {
             gameActivity.wordFound()
             if(hasNextWord()){
-                gameActivity.currentIndexWord++
-                tv_word_to_find.text = gameActivity.wordsList[gameActivity.currentIndexWord].value
+                GameParameter.currentIndexWord++
+                tv_word_to_find.text = gameActivity.wordsList[GameParameter.currentIndexWord].value
             }
             else{
                 timerCanRun = false
@@ -110,7 +111,7 @@ class SessionFragment : Fragment() {
 
             var secs = (updatedTime / 1000).toInt()
             secs %= 60
-            val timeToDisplay = gameActivity.duration - secs
+            val timeToDisplay = GameParameter.duration - secs
 
             // The Fragment is Visible so the timer must go on
             if((timeToDisplay>0)&&(timerCanRun)) {
@@ -122,7 +123,7 @@ class SessionFragment : Fragment() {
                     gameActivity.playBuzzer()
                     gameActivity.nextTeam()
                 }
-                if(gameActivity.gameStarted) {
+                if(GameParameter.gameStarted) {
                     gameActivity.displayGameTeamActionFragment()
                 }
             }
@@ -139,7 +140,7 @@ class SessionFragment : Fragment() {
      * Else return false
      */
     private fun hasNextWord(): Boolean{
-        if(gameActivity.currentIndexWord<(gameActivity.wordsList.size-1)){
+        if(GameParameter.currentIndexWord<(gameActivity.wordsList.size-1)){
             return true
         }
         return false

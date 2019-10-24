@@ -10,10 +10,11 @@ import com.hrand.android.timesupmobile.fragments.SessionFragment
 import com.hrand.android.timesupmobile.R
 import com.hrand.android.timesupmobile.daos.WordDao
 import com.hrand.android.timesupmobile.fragments.StatFragment
+import com.hrand.android.timesupmobile.models.GameParameter
 import com.hrand.android.timesupmobile.models.Word
 
 class GameActivity : AppCompatActivity() {
-
+/*
     var difficulty = 2
     var duration = 5
     var nbTeam = 2
@@ -24,6 +25,8 @@ class GameActivity : AppCompatActivity() {
     var statFragmentIsVisible = false
     var currentIndexWord = 0
     var gameStarted = false
+
+ */
     lateinit var gameTeamActionFragment: GameTeamActionFragment
     lateinit var sessionFragment: SessionFragment
     lateinit var statFragment: StatFragment
@@ -44,10 +47,10 @@ class GameActivity : AppCompatActivity() {
         val bundle: Bundle? = intent.extras
 
         if (bundle != null) {
-            difficulty = bundle.getInt("difficulty", 2)
-            duration = bundle.getInt("duration", 10)
-            Log.d("haja", "duration=$duration")
-            nbTeam = bundle.getInt("nbTeam", 2)
+            GameParameter.difficulty = bundle.getInt("difficulty", 2)
+            GameParameter.duration = bundle.getInt("duration", 10)
+            Log.d("haja", "duration=$GameParameter.duration")
+            GameParameter.nbTeam = bundle.getInt("nbTeam", 2)
         }else{
             Log.d("haja", "savedInstanceState est null!!!")
         }
@@ -60,7 +63,7 @@ class GameActivity : AppCompatActivity() {
             sessionFragment = SessionFragment.newInstance()
             statFragment = StatFragment.newInstance()
             displayGameTeamActionFragment()
-            gameStarted = true
+            GameParameter.gameStarted = true
         }
         else{
             Toast.makeText(this, "Base de mots non initialisé.", Toast.LENGTH_SHORT).show()
@@ -70,65 +73,65 @@ class GameActivity : AppCompatActivity() {
     }
 
     fun displayGameTeamActionFragment(){
-        if(sessionFragmentIsVisible){
+        if(GameParameter.sessionFragmentIsVisible){
             closeSessionFragment()
         }
-        if(statFragmentIsVisible){
+        if(GameParameter.statFragmentIsVisible){
             closeStatFragment()
         }
-        if(!gameTeamActionFragmentIsVisible) {
+        if(!GameParameter.gameTeamActionFragmentIsVisible) {
             supportFragmentManager.beginTransaction().add(R.id.rl_fragment, gameTeamActionFragment, "gameTeamActionFragment").commit()
-            gameTeamActionFragmentIsVisible = true
+            GameParameter.gameTeamActionFragmentIsVisible = true
         }
     }
 
     fun displaySessionFragment(){
-        if(gameTeamActionFragmentIsVisible) {
+        if(GameParameter.gameTeamActionFragmentIsVisible) {
             closeGameTeamActionFragment()
         }
-        if(statFragmentIsVisible){
+        if(GameParameter.statFragmentIsVisible){
             closeStatFragment()
         }
-        if(!sessionFragmentIsVisible) {
+        if(!GameParameter.sessionFragmentIsVisible) {
             supportFragmentManager.beginTransaction().add(R.id.rl_fragment, sessionFragment, "sessionFragment").commit()
-            sessionFragmentIsVisible = true
+            GameParameter.sessionFragmentIsVisible = true
         }
     }
 
     fun displayStatFragment(){
-        if(sessionFragmentIsVisible){
+        if(GameParameter.sessionFragmentIsVisible){
             closeSessionFragment()
             Log.d("haja", "closeSessionFragment")
         }
-        if(gameTeamActionFragmentIsVisible) {
+        if(GameParameter.gameTeamActionFragmentIsVisible) {
             closeGameTeamActionFragment()
             Log.d("haja", "closeGameTeamActionFragment")
         }
         supportFragmentManager.beginTransaction().add(R.id.rl_fragment, statFragment, "statFragment").commit()
-        statFragmentIsVisible = true
+        GameParameter.statFragmentIsVisible = true
     }
 
     private fun closeGameTeamActionFragment(){
         supportFragmentManager.beginTransaction().remove(gameTeamActionFragment).commit()
-        gameTeamActionFragmentIsVisible = false
+        GameParameter.gameTeamActionFragmentIsVisible = false
     }
 
     private fun closeSessionFragment(){
         supportFragmentManager.beginTransaction().remove(sessionFragment).commit()
-        sessionFragmentIsVisible = false
+        GameParameter.sessionFragmentIsVisible = false
     }
 
     private fun closeStatFragment(){
         supportFragmentManager.beginTransaction().remove(statFragment).commit()
-        statFragmentIsVisible = false
+        GameParameter.statFragmentIsVisible = false
     }
 
     override fun onBackPressed() {
-        if(sessionFragmentIsVisible){
+        if(GameParameter.sessionFragmentIsVisible){
             sessionFragment.stopTimer()
             closeSessionFragment()
         }
-        if(statFragmentIsVisible){
+        if(GameParameter.statFragmentIsVisible){
             closeStatFragment()
         }
         super.onBackPressed()
@@ -150,20 +153,20 @@ class GameActivity : AppCompatActivity() {
     }
 
     fun nextTeam(){
-        if(currentTeam==nbTeam){ // we are the last team
+        if(GameParameter.currentTeam==GameParameter.nbTeam){ // we are the last team
             Log.d("haja", "Reinitialisation team à 1")
-            currentTeam = 1
+            GameParameter.currentTeam = 1
         }
         else{
             Log.d("haja", "Incrémentation team")
-            currentTeam++
+            GameParameter.currentTeam++
         }
     }
 
     fun nextSession(): Boolean{
-        if(currentSession<3){
-            currentSession++
-            currentIndexWord = 0
+        if(GameParameter.currentSession<3){
+            GameParameter.currentSession++
+            GameParameter.currentIndexWord = 0
             displayGameTeamActionFragment()
             wordsList = wordsList.shuffled()
             return true
@@ -177,7 +180,7 @@ class GameActivity : AppCompatActivity() {
      * Increment the point of the team who found the word
      */
     fun wordFound(){
-        when(currentTeam){
+        when(GameParameter.currentTeam){
             1 -> t1Points++
             2 -> t2Points++
             3 -> t3Points++
@@ -206,7 +209,7 @@ class GameActivity : AppCompatActivity() {
 
     fun endGame(){
         Log.d("haja", "end of the game")
-        gameStarted = false
+        GameParameter.gameStarted = false
         displayWinner()
     }
 
