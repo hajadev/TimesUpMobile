@@ -11,9 +11,19 @@ class GameParameter{
         var gameTeamActionFragmentIsVisible = false
         var sessionFragmentIsVisible = false
         var statFragmentIsVisible = false
-        var currentIndexWord = 0
         var gameStarted = false
-    }
 
+        fun initParameters(){
+            difficulty = 2
+            duration = 5
+            nbTeam = 2
+            currentSession = 1
+            currentTeam = 1
+            gameTeamActionFragmentIsVisible = false
+            sessionFragmentIsVisible = false
+            statFragmentIsVisible = false
+            gameStarted = false
+        }
+    }
 
 }

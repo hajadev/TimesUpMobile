@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.hrand.android.timesupmobile.R
 import com.hrand.android.timesupmobile.activities.GameActivity
 import com.hrand.android.timesupmobile.models.GameParameter
+import com.hrand.android.timesupmobile.models.Word
 import kotlinx.android.synthetic.main.fragment_session.*
 
 
@@ -23,6 +24,7 @@ class SessionFragment : Fragment() {
     var updatedTime = 0L
     var timerCanRun = false
     lateinit var gameActivity: GameActivity
+    lateinit var wordDisplayed: Word
     //var currentIndex = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -36,32 +38,47 @@ class SessionFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        tv_word_to_find.text = gameActivity.wordsList[GameParameter.currentIndexWord].value
+        wordDisplayed = gameActivity.deckWord.first()
+        tv_word_to_find.text = wordDisplayed.value
 
         setListener()
-
         startTimer()
 
     }
 
     private fun setListener(){
         btn_found.setOnClickListener {
-            gameActivity.wordFound()
+            gameActivity.wordFound(wordDisplayed)
             if(hasNextWord()){
-                GameParameter.currentIndexWord++
-                tv_word_to_find.text = gameActivity.wordsList[GameParameter.currentIndexWord].value
+                wordDisplayed = gameActivity.deckWord.first()
+                tv_word_to_find.text = wordDisplayed.value
             }
             else{
                 timerCanRun = false
                 gameActivity.nextTeam()
-                if(!gameActivity.nextSession()) // go to next session if we are not on the last session
+                if(gameActivity.hasOtherSession()) { // go to next session if we are not on the last session
+                    gameActivity.nextSession()
+                }
+                else {
                     gameActivity.endGame()
+                }
             }
         }
 
         btn_pass.setOnClickListener {
+            /*
+            // for dev purpose: removeTime
             timeSwapBuff += timeInMilliseconds
             customHandler.removeCallbacks(updateTimerThread)
+            */
+            if(hasNextWord()){
+                gameActivity.wordNotFound(wordDisplayed)
+                wordDisplayed = gameActivity.deckWord.first()
+                tv_word_to_find.text = wordDisplayed.value
+            }
+            else{ // no other words
+                Log.e("haja", "Erreur, pas de mot! Impossible!!!")
+            }
         }
     }
 
@@ -140,10 +157,7 @@ class SessionFragment : Fragment() {
      * Else return false
      */
     private fun hasNextWord(): Boolean{
-        if(GameParameter.currentIndexWord<(gameActivity.wordsList.size-1)){
-            return true
-        }
-        return false
+        return !gameActivity.deckWord.isEmpty()
     }
 
     companion object {

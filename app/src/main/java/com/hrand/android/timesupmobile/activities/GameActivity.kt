@@ -12,6 +12,8 @@ import com.hrand.android.timesupmobile.daos.WordDao
 import com.hrand.android.timesupmobile.fragments.StatFragment
 import com.hrand.android.timesupmobile.models.GameParameter
 import com.hrand.android.timesupmobile.models.Word
+import java.util.*
+import kotlin.collections.ArrayList
 
 class GameActivity : AppCompatActivity() {
 /*
@@ -38,7 +40,9 @@ class GameActivity : AppCompatActivity() {
 
     var winner = 0
 
-    lateinit var wordsList: List<Word>
+    lateinit var deckWord: List<Word>
+    lateinit var wordsFound: List<Word>
+    lateinit var deckWordNotFound: List<Word>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,9 +59,9 @@ class GameActivity : AppCompatActivity() {
             Log.d("haja", "savedInstanceState est null!!!")
         }
 
-        wordsList = initWords(8)
-
-        if(!wordsList.isEmpty()) {
+        deckWord = initWords(8)
+        wordsFound = ArrayList()
+        if(!deckWord.isEmpty()) {
             // Fragments initialization
             gameTeamActionFragment = GameTeamActionFragment.newInstance()
             sessionFragment = SessionFragment.newInstance()
@@ -163,23 +167,26 @@ class GameActivity : AppCompatActivity() {
         }
     }
 
-    fun nextSession(): Boolean{
-        if(GameParameter.currentSession<3){
-            GameParameter.currentSession++
-            GameParameter.currentIndexWord = 0
-            displayGameTeamActionFragment()
-            wordsList = wordsList.shuffled()
-            return true
-        }
-        else{ // end of the game
-            return false
-        }
+    /**
+     * Go to next session, the deck is reinit with all the words
+     */
+    fun nextSession(){
+        GameParameter.currentSession++
+        (deckWord as ArrayList).addAll(wordsFound)
+        (wordsFound as ArrayList).clear()
+        deckWord = deckWord.shuffled()
+        displayGameTeamActionFragment()
+    }
+
+    fun hasOtherSession(): Boolean{
+        return GameParameter.currentSession<3
     }
 
     /**
      * Increment the point of the team who found the word
+     * Move the word to the wordsFound list
      */
-    fun wordFound(){
+    fun wordFound(word: Word){
         when(GameParameter.currentTeam){
             1 -> t1Points++
             2 -> t2Points++
@@ -189,6 +196,16 @@ class GameActivity : AppCompatActivity() {
                 Log.e("haja", "Problème de comptage de points...")
             }
         }
+        (deckWord as ArrayList).remove(word)
+        (wordsFound as ArrayList).add(word)
+    }
+
+    /**
+     * Put the word to the end of the deck
+     */
+    fun wordNotFound(word: Word){
+        (deckWord as ArrayList).remove(word)
+        (deckWord as ArrayList).add(word)
     }
 
     /**
@@ -211,6 +228,7 @@ class GameActivity : AppCompatActivity() {
         Log.d("haja", "end of the game")
         GameParameter.gameStarted = false
         displayWinner()
+        GameParameter.initParameters()
     }
 
     fun playBuzzer(){
