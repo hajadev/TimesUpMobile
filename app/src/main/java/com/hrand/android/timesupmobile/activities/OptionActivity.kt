@@ -38,6 +38,7 @@ class OptionActivity : AppCompatActivity() {
 
         btn_clear_content.setOnClickListener { v ->
             clearDataBase()
+            Toast.makeText(this, R.string.content_cleared, Toast.LENGTH_SHORT).show()
         }
 
     }
