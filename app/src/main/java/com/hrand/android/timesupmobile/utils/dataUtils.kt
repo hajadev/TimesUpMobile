@@ -79,9 +79,9 @@ fun initData(){
     val w24 = Word(value = "Léopard", difficulty = 1)
     w24.themes.add(t1)
 
-    val w11 = Word(value = "Yoga", difficulty = 1)
+    val w11 = Word(value = "Barcelone", difficulty = 1)
     w11.themes.add(t2)
-    val w12 = Word(value = "Karaté", difficulty = 1)
+    val w12 = Word(value = "New York", difficulty = 1)
     w12.themes.add(t2)
 
     val w16 = Word(value = "Jackie Chan", difficulty = 1)
